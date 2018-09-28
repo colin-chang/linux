@@ -273,10 +273,14 @@ $ chmod [-options] xxx file
 
 * 常见权限组合有
 <table style='text-align:center'>
-<tr><th>权限组合</th><th colspan='3'>所有者权限</th><th colspan='3'>所在组权限</th><th colspan='3'>其他组权限</th></tr>
-<tr><td>777</td><td>r</td><td>w</td><td>x</td><td>r</td><td>w</td><td>x</td><td>r</td><td>w</td><td>x</td></tr>
-<tr><td>755</td><td>r</td><td>w</td><td>x</td><td>r</td><td>-</td><td>x</td><td>r</td><td>-</td><td>x</td></tr>
-<tr><td>644</td><td>r</td><td>w</td><td>-</td><td>r</td><td>-</td><td>-</td><td>r</td><td>-</td><td>-</td></tr>
+  <thead>
+    <tr><th>权限组合</th><th colspan='3'>所有者权限</th><th colspan='3'>所在组权限</th><th colspan='3'>其他组权限</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>777</td><td>r</td><td>w</td><td>x</td><td>r</td><td>w</td><td>x</td><td>r</td><td>w</td><td>x</td></tr>
+    <tr><td>755</td><td>r</td><td>w</td><td>x</td><td>r</td><td>-</td><td>x</td><td>r</td><td>-</td><td>x</td></tr>
+    <tr><td>644</td><td>r</td><td>w</td><td>-</td><td>r</td><td>-</td><td>-</td><td>r</td><td>-</td><td>-</td></tr>
+  </tbody>
 </table>
 
 ```sh
