@@ -98,8 +98,8 @@ $ sudo dpkg -i <deb安装包>
 
 <small>安装输入法过程中，不要卸载系统自带的iBus输入法系统选项。如果不小心卸载输入法之后发现系统设置无法打开，可以通过以下方式修复</small>
 ```sh
-sudo apt-get install gnome-control-center           #如果系统设置打不开，请重新安装gnome-control-center
-sudo apt-get install unity-control-center           #如果设置里只有很少的几个图标请重新安装unity-control-center
+$ sudo apt-get install gnome-control-center           #如果系统设置打不开，请重新安装gnome-control-center
+$ sudo apt-get install unity-control-center           #如果设置里只有很少的几个图标请重新安装unity-control-center
 ```
 
 ## 6. CentOS配置FTP与Nginx
