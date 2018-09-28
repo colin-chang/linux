@@ -242,7 +242,7 @@ $ chmod +/-r|w|x file|dir
 * 此种方式会同时修改 所有者、所在组、其他组 权限，不能精确修改三者各自权限
 
 ```sh
-chmod +x 123.txt    # 添加123.txt文件的可执行权限
+chmod +x 123.txt    # 添加123.txt文件的可执行权限
 chmod -rw demo      # 移除demo目录的读写权限
 ```
 
