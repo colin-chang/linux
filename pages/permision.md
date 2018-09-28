@@ -187,7 +187,7 @@ $ exit
 * `user`为空会切换到`root`用户。不安全，不推荐
 * 切换和退出用户示意图：
 
-<img src='../img/suexit.jpg' style='width:450px'>
+<img src='../img/suexit.jpg' style='max-width:55%'>
 
 ```sh
 # 切换test用户并切换到其主目录(/home/test)
