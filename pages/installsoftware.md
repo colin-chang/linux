@@ -1,11 +1,12 @@
-# 软件安装
+# 软件工具安装
 
 * [1. 设置服务器镜像源](#1-设置服务器镜像源)
 * [2. apt命令](#2-apt命令)
 * [3. 安装常用软件](#3-安装常用软件)
 * [4. deb安装格式](#4-deb安装格式)
 * [5. 安装Chrome和Sogou](#5-安装chrome和sogou)
-* [6. CentOS配置FTP与Nginx](#6-centos配置ftp与nginx)
+* [6. Nginx安装和配置](#6-nginx安装和配置)
+* [7. CentOS配置FTP](#7-centos配置ftp)
 
 ## 1. 设置服务器镜像源
 Ubuntu官方服务器在境外，连接速度较慢。为此Ubuntu提供了`选择最佳服务器`的功能，方便我们选择一个速度最快的镜像服务器。
@@ -102,18 +103,105 @@ $ sudo apt-get install gnome-control-center           #如果系统设置打不�
 $ sudo apt-get install unity-control-center           #如果设置里只有很少的几个图标请重新安装unity-control-center
 ```
 
-## 6. CentOS配置FTP与Nginx
-### 6.1 vsftpd安装与配置
+## 6. Nginx安装和配置
+Nginx是当下流行的跨平台高性能的HTTP和反向代理服务。下面我们简单的介绍以下Ubuntu和mac OS中的安装和配置方法
 
-#### 1) 更新yum源
+### 6.1 安装nginx
+#### 1) Ubuntu
+```sh
+# 更新apt
+$ sudo apt update
+
+# 安装nginx
+$ sudo apt install nginx
+```
+nginx安装完成之后默认已经启动，可以直接访问 http://localhost/，如果看到欢迎页面说明nginx安装成功。
+
+#### 2) mac OS
+```sh
+# 更新brew
+$ brew update
+
+# 安装nginx
+$ brew install nginx
+```
+
+nginx安装完成之后默认已经启动，可以直接访问 http://localhost:8080/，如果看到欢迎页面说明nginx安装成功。
+
+### 6.2 简单配置
+nginx主配置文件为`nginx.conf`。反代功能只需简单配置 `http`节点即可。简单配置实例如下:
+
+```json
+upstream proxygroup {
+    server 35.236.93.136:5000 weight=1 max_fails=2 fail_timeout=30s;
+    server 35.236.93.138:5001 weight=1 max_fails=2 fail_timeout=30s;
+}
+
+server {
+    listen        80; 
+    server_name   localhost 35.236.93.135 bet518.win www.bet518.win;
+    location / {
+        proxy_pass         http://proxygroup;
+        proxy_http_version 1.1;
+        proxy_set_header   Upgrade $http_upgrade;
+        proxy_set_header   Connection keep-alive;
+        proxy_set_header   Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+    }
+}
+```
+以上配置是将对`localhost,35.236.93.139,bet518.win,www.bet518.win`等地址80端口的访问平均分发到`35.236.93.136:5000`和`35.236.93.138:5001`。
+
+**修改配置之后需要重新加载或重启nginx服务**
+
+> 详细配置含义可以参考
+* https://blog.csdn.net/chenweijiSun/article/details/70823482
+* https://www.jianshu.com/p/cee15a00728b
+* http://tengine.taobao.org/nginx_docs/cn/docs/
+
+#### 1) Ubuntu
+* 默认配置文件在`/etc/nginx/`目录中
+* 配置文件`include`指令可以讲其他文件内容引用的当前指令的位置。nginx/1.14.0 (Ubuntu)的主配置文件中`include /etc/nginx/sites-enabled/*;`将`/etc/nginx/sites-enabled/`目录下所有文件引入，此目录下默认只有`default`文件，此文件是一个软链接指向`/etc/nginx/sites-available/default`。`/etc/nginx/sites-available/default`此文件是nginx的默认配置文件
+
+#### 2) mac OS
+* 默认配置文件在`/usr/local/etc/nginx/`目录中
+* mac中可以使用`brew uninstall nginx`卸载nginx，但会有配置文件等遗留文件导致重装后存在问题。可以使用`find /usr/local/ -name "*nginx*"`命令查找所有相关文件并手动清理后再重装。
+* mac中配置nginx若提示某系目录和文件不存在错误，手动创建相应文件即可
+
+> nginx相关命令
+
+```sh
+# 启动
+$ sudo nginx
+
+# 停止
+$ sudo nginx -s stop
+
+# 退出
+$ sudo nginx -s quit
+
+# 重启
+$ sudo nginx -s reopen
+
+# 重新加载配置
+$ sudo nginx -s reload
+```
+
+> 若需通过外网访问nginx需要在服务器防火墙放开对应端口
+
+## 7. CentOS配置FTP与Nginx
+
+### 1) 更新yum源
 更新yum源，便捷工具下载地址：http://help.aliyun.com/manual?spm=0.0.0.0.zJ3dBU&helpId=1692
 
-#### 2) 安装vsftp
+### 2) 安装vsftp
 ``` sh
 # yum install vsftpd -y
 ```
 
-#### 3) 添加ftp帐号和目录
+### 3) 添加ftp帐号和目录
 先检查一下nologin的位置，通常在 `/usr/sbin/nologin` 或 `/sbin/nologin` 目录下。
 ```sh
 # useradd -d /web -s /sbin/nologin test #创建帐户，该命令指定了/web 为用户test的家目录，您可以自己定义帐户名和目录
@@ -121,7 +209,7 @@ $ sudo apt-get install unity-control-center           #如果设置里只有很�
 # chown -R test.test /web               #修改指定目录的权限
 ```
 
-#### 4) 配置vsftp
+### 4) 配置vsftp
 编辑vsftp配置文件
 ```sh
 # vi /etc/vsftpd/vsftpd.conf
@@ -134,18 +222,18 @@ $ sudo apt-get install unity-control-center           #如果设置里只有很�
 
 * 添加配置项 `allow_writeable_chroot=YES`
 
-#### 5) 设置vsftpd开机启动
+### 5) 设置vsftpd开机启动
 ```sh
 # systemctl enable vsftpd
 ```
 
-#### 6) 修改shell配置
+### 6) 修改shell配置
 如果该文件里没有 `/usr/sbin/nologin` 或者 `/sbin/nologin` (具体看当前系统配置)则追加进去
 ```sh
 # vi /etc/shells 
 ```
 
-#### 7) 配置防火墙和SELinux
+### 7) 配置防火墙和SELinux
 ```sh
 # firewall-cmd --permanent --zone=public --add-service=ftp  #添加ftp入站规则
 # firewall-cmd --reload                                     #重启防火墙
@@ -153,7 +241,7 @@ $ sudo apt-get install unity-control-center           #如果设置里只有很�
 # setsebool -P allow_ftpd_full_access 1
 ```
 
-#### 8) 启动vsftp服务并测试登录
+### 8) 启动vsftp服务并测试登录
 ```sh
 # service vsftpd start	#启动vsftp服务
 ```
@@ -165,57 +253,4 @@ $ sudo apt-get install unity-control-center           #如果设置里只有很�
 # systemctl start firewalld.service       #启动firewall
 # systemctl stop firewalld.service        #停止firewall
 # systemctl disable firewalld.service     #禁止firewall开机启动
-```
-
-### 6.2 Nginx安装与配置
-
-#### 1) 下载对应当前系统版本的nginx包
-```sh
-# wget http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
-```
-
-#### 2) 建立nginx的yum仓库
-```sh
-# rpm -ivh nginx-release-centos-7-0.el7.ngx.noarch.rpm
-```
-
-#### 3) 下载并安装nginx
-```sh
-# yum install nginx
-```
-
-#### 4) 启动nginx服务
-```sh
-# systemctl start nginx
-```
-
-#### 5) 配置
-打开 `nginx.conf`，配置文件里的 `http` 配置区块中用 `include` 指令，把所有的在 `/etc/nginx/conf.d` 这个目录下面的 `.conf` 文件包含到了这里。也就是如果我们想去添加自己的配置，可以把配置放到一个以 `.conf` 结尾的文件里面，再把这个文件放到 `/etc/nginx/conf.d` 这个目录的下面，重新加载 nginx 以后，这些配置就会生效了。
-
-如创建 `taishanlive.conf`,内容如下
-```json
-upstream taishan.live {
-        server chanyikeji.com:50001 weight=1;
-}
-server {
-        listen 80;
-        server_name 59.188.252.15 taishan.live www.taishan.live;
-        location / {
-            proxy_pass http://taishan.live;
-            proxy_set_header   Host             #host;
-            proxy_set_header   X-Real-IP        #remote_addr;
-            proxy_set_header   X-Forwarded-For  #proxy_add_x_forwarded_for;
-        }
-}
-```
-
-#### 6) 权限
-负载均衡如果遇到此权限问题，error.log日志：`*** connect() to 127.0.0.1:8080 failed (13: Permission denied) while connecting to upstream**` 这是SeLinux的导致，可用以下命令解决：
-```sh
-# setsebool -P httpd_can_network_connect 1
-```
-
-#### 7) 重启nginx
-```sh
-# systemctl restart nginx
 ```

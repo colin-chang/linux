@@ -62,7 +62,7 @@ $ which useradd
 | [`cat [-options] [file]`](#27-cat命令)|查看文件内容/创建文件/文件合并/追加文件内容等|
 | [`more [-options] file`](#28-more命令)|分页显示文件内容|
 | [`grep [-opinions] [pattern] [file]`](#29-grep命令)|在文本文件中查找内容|
-| [`vi [-options] [file]`](#210-vi编辑器)|使用vi编辑器编辑文本文件|
+| [`vi/vim [-options] [file]`](#210-vivim编辑器)|使用vi/vim编辑器编辑文本文件|
 | `echo [-option] [string]`|在终端中打印字符串。通常会和重定向联合使用|
 | [重定向和管道](#211-重定向和管道)|重定向:将终端输出保存至文件;管道:对终端输出进行再操作|
 | [`find [path] [-options] [expression]`](#212-find命令)|在目录中搜索文件|
@@ -319,8 +319,13 @@ $ grep colin test.txt
 $ grep -ni ^colin test.txt
 ```
 
-### 2.10 vi编辑器
-vi编辑器是linux下流行的文本编辑器
+### 2.10 vi/vim编辑器
+vi编辑器是linux下流行的文本编辑器,vim则是基于vi的高级编辑器。所有vim兼容vi所有的命令。Ubuntu部分版本的vi编辑器不太好用，推荐使用vim替代。
+
+```sh
+# 安装vim
+$ sudo apt install vim
+```
 
 #### 1) 查看模式
 ```sh

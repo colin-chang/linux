@@ -91,9 +91,14 @@ $ ping [-options] destination
 # 命令格式
 $ ssh [-options] [user@hostname]
 ```
+
+options|含义
+:-|:-
+`-p`|指定ssh端口号,默认端口为`22`
+`-i`|使用指定私钥文件连接服务器([免密登录](#2-免密登录))
+
 * `user`远程服务器登录的用户名，默认为当前用户
 * `hostname`远程服务器地址。可以是IP/域名/别名
-* ssh server监听的端口号默认为`22`,默认端口可以省略。若为其他端口可通过`-p`指定。
 * `exit`或`logout`命令均可退出当前登录
 
 ```sh
@@ -132,17 +137,43 @@ $ scp 123.txt ColinMac:Desktop
 ```
 
 #### 2) 免密登录
-* 远程管理命令(如ssh,scp等)每次都需要提供用户密码保证安全。除此之外，我们也可配置使用非对称加密方式，避免每次输入密码
+```
+# 命令格式
+$ ssh-keygen [-options]
+```
+options|含义
+:-|:-
+`-t`|指定加密类型,默认为非对称加密(`rsa`), 所有可选项`[dsa,ecdsa,ed25519,rsa]`
+`-f`|密钥文件名。
+`-C`|注释，将附加在密钥文件尾部
+
+* 远程管理命令(如ssh,scp等)每次都需要提供用户密码保证安全。除此之外，我们也可配置使指定加密算法验证密钥文件的方式，避免每次输入密码
 * 配置免密登录后，ssh连接和scp等远程管理命令都不需要再输密码
-* 配置只有以下两步：
+* 生成密钥时若指定了文件名，连接服务器时需要通过`-i`指定要验证的密钥文件,形如：`ssh -i file user@host`。默认文件名则可省略
+* 默认配置只需以下两步：
 
 ```sh
 # 客户端生成密钥对
 $ ssh-keygen
 
 # 上传公钥到服务器
-ssh-copy-id user@hostname   # 文件会自动上传为服务器特定文件 ～/.ssh/authorized_keys
+$ ssh-copy-id user@hostname   # 文件会自动上传为服务器特定文件 ～/.ssh/authorized_keys
 ```
+
+> Google Cloud 密钥链接
+
+出于安全考虑，GCP(Google Cloud Platform)的公钥文件一般需要人工填写到平台的`元数据`配置中，且GCP只允许使用密钥文件验证登录方式进行连接。
+
+```sh
+# 以非对称加密方式生成密钥文件my-ssh-key保存到~/.ssh目录下。
+# 密钥文件以colin(将作为GCP的用户名)作为注释
+
+$ ssh-keygen -t rsa -f ~/.ssh/my-ssh-key -C colin
+
+# 连接GCP
+$ ssh -i ~/.ssh/my-ssh-key colin@35.236.93.139
+```
+
 
 ## 5. scp命令
 ```sh
