@@ -191,6 +191,83 @@ $ sudo nginx -s reload
 
 > 若需通过外网访问nginx需要在服务器防火墙放开对应端口
 
+### 6.3 虚拟主机
+虚拟主机是一种特殊的软硬件技术，它可以将网络上的一台物理主机分成多个虚拟主机，每个虚拟主机可以独立对外提供www服务，这样就可以实现一台主机对外提供多个Web服务，每个虚拟主机之间是独立的，互不影响。
+
+#### 6.3.1 nginx支持三种类型的虚拟主机配置
+##### 1) 基于ip的虚拟主机， (一台主机绑定多个ip地址)
+
+```json
+server{
+  listen       192.168.1.1:80;
+  server_name  localhost;
+}
+server{
+  listen       192.168.1.2:80;
+  server_name  localhost;
+}
+```
+
+##### 2) 基于域名的虚拟主机(servername)
+```json
+server{
+  listen       80;
+  server_name  www.nginx1.com www.nginx2.com;
+}
+server{
+  listen       80;
+  server_name  www.nginx3.com;
+}
+```
+
+##### 3) 基于端口的虚拟主机(listen不写ip的端口模式)
+```json
+server{
+  listen       80;
+  server_name  localhost;
+}
+server{
+  listen       81;
+  server_name  localhost;
+}
+```
+
+#### 6.3.2 静态服务器配置
+
+* 使用nginx虚拟主机技术科技在nginx上挂在多个Web服务
+* 如果使用nginx挂载网站，其默认文件访问路径一般通过root属性指定。Linux中默认使用绝对路径`/var/www/html/`，Mac中默认使用相对路径`html`。
+* **建议将网站文件放在nginx的root指定目录或其子目录下，其他目录可能导致nginx无权访问，造成nginx莫名出现404错误**
+
+> mac OS中相对路径文件定位
+
+mac OS中nginx配置大多使用相对路径，相对路径都是相对与nginx运行程序本身,我们可以通过以下步骤定位文件。
+
+```sh
+# 定位nginx程序路径
+$ which nginx   # 输出 /usr/local/bin/nginx
+
+# 切换到程序目录
+$ cd /usr/local/bin/
+
+# 确认nginx程序文件是否为软链接
+$ ls -lh nginx   # 确认为软软链接，链接指向 ../Cellar/nginx/1.15.4/bin/nginx
+
+# 切换到链接目录·
+$ cd ../Cellar/nginx/1.15.4/bin/    # 此为nginx程序真正目录
+
+# 查看nginx当前版本目录
+$ cd ..     # 切换到nginx当前版本目录
+$ ls -lh    # 找到root中使用的html目录，html又是一个软链接，链接指向 ../../../var/www
+
+# 切换到链接目录
+$ cd ../../../var/www
+
+# 输出最终网站文件目录
+$ pwd   # /usr/local/var/www
+```
+
+mac OS中配置大量使用多层相对路径和软连接，导致定位文件或目录十分繁琐，相比之下，Linux中配置要简单许多。
+
 ## 7. CentOS配置FTP与Nginx
 
 ### 1) 更新yum源
