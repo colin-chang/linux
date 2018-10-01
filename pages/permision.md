@@ -227,7 +227,7 @@ Linux修改权限有一下三种方式:
 $ sudo chown test 123.txt
 
 # 将code目录所有者修改为test用户
-# sudo chown test code
+$ sudo chown test code
 ```
 
 #### 3.2.2 chmod命令
@@ -242,8 +242,8 @@ $ chmod +/-r|w|x file|dir
 * 此种方式会同时修改 所有者、所在组、其他组 权限，不能精确修改三者各自权限
 
 ```sh
-chmod +x 123.txt    # 添加123.txt文件的可执行权限
-chmod -rw demo      # 移除demo目录的读写权限
+$ chmod +x 123.txt    # 添加123.txt文件的可执行权限
+$ chmod -rw demo      # 移除demo目录的读写权限
 ```
 
 ##### 2) 数字方式
