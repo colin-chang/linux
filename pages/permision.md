@@ -218,7 +218,7 @@ Linux修改权限有一下三种方式:
 命令|作用
 :-|:-
 [`chown [-options] [owner] FILE`](#321-chown命令) |修改所有者
-[`chgrp [-options] GROUP FILE`](#1用户组管理) |修改所在组
+[`chgrp [-options] GROUP FILE`](#1-用户组管理) |修改所在组
 [`chmod [-options] MODE FILE`](#322-chmod命令)|直接修改权限
 
 #### 3.2.1 chown命令
