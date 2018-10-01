@@ -1,6 +1,6 @@
 {
-    "title": "PythonBook",
-    "description": "Python学习笔记",
+    "title": "Linux入门",
+    "description": "Linux学习笔记",
     "plugins": [
         "disqus",
         "-lunr", "-search", "search-plus",
@@ -25,7 +25,7 @@
             "shortName": "Idea"
         },
         "github": {
-            "url": "https://github.com/colin-chang/PythonBook"
+            "url": "https://github.com/colin-chang/Linux"
         },
         "prism": {
             "css": [
@@ -47,7 +47,7 @@
             }
         },
         "sitemap": {
-            "hostname": "https://colinchang.gitbook.io/colinblog/"
+            "hostname": "https://colinchang.gitbook.io/linux/"
         },
         "sharing": {
             "facebook": true,
