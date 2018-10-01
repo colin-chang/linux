@@ -163,7 +163,7 @@ server {
 
 #### 1) Ubuntu
 * 默认配置文件在`/etc/nginx/`目录中
-* 配置文件`include`指令可以讲其他文件内容引用的当前指令的位置。nginx/1.14.0 (Ubuntu)的主配置文件中`include /etc/nginx/sites-enabled/*;`将`/etc/nginx/sites-enabled/`目录下所有文件引入，此目录下默认只有`default`文件，此文件是一个软链接指向`/etc/nginx/sites-available/default`。`/etc/nginx/sites-available/default`此文件是nginx的默认配置文件
+* 配置文件`include`指令可以将其他文件内容引用的当前指令的位置。nginx/1.14.0 (Ubuntu)的主配置文件中`include /etc/nginx/sites-enabled/*;`将`/etc/nginx/sites-enabled/`目录下所有文件引入，此目录下默认只有`default`文件，此文件是一个软链接指向`/etc/nginx/sites-available/default`。`/etc/nginx/sites-available/default`此文件是nginx的默认配置文件
 
 #### 2) mac OS
 * 默认配置文件在`/usr/local/etc/nginx/`目录中
