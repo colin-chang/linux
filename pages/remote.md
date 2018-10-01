@@ -181,7 +181,7 @@ $ ssh -i ~/.ssh/my-ssh-key colin@35.236.93.139
 $ scp [-options] [[user@]host1:]file1 [[user@]host2:]file2
 ```
 
-* `scp`是secure copy缩写，可以在Linux中远程拷贝文件.以ssh连接方式书写远程地址，拷贝于`cp`命令类似。
+* `scp`是secure copy缩写，可以在Linux中远程拷贝文件.以ssh连接方式书写远程地址，拷贝于`cp`命令类似。
 * `scp`命令只能在Unix内核系统(如Linux/mac OS) 中运行。在Windows中文件传输推荐使用FTP工具,如FileZilla
 
 options|含义
