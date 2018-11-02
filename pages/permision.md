@@ -54,8 +54,8 @@ $ sudo rm -r Application      # 以管理员身份删除Application目录
 [`id [-options] [user]`](#2-id命令)|查看用户和所在组信息
 `who [-options]`| 查看当前登录到系统的活跃用户
 `whoami`| 查看当前用户名
-[`usermod [-options] user`](#2-usermod命令)|修改用户信息
-[`su [-options] [user]`](#54-切换用户)|切换用户
+[`usermod [-options] user`](#2.4.2-usermod命令)|修改用户信息
+[`su [-options] [user]`](#2.5-切换用户)|切换用户
 
 ### 2.2 创建用户
 #### 1) useradd命令
@@ -152,7 +152,7 @@ $ usermod [-options] user
 options|含义
 :-|:-
 `-g`|修改用户主组。用户创建后一般不会修改主组
-`-G`|修改用户附加组
+`-G`|修改用户附加组。一般配合`-a`来完成向其它组添加
 `-s`|修改shell
 
 ##### 1) 修改组

@@ -11,21 +11,26 @@
 
 目录 | 说明
 :-|:-
+/ | 根目录，一般根目录下只存放目录，在Linux下有且只有一个根目录。所有的东西都是从这里开始
 /bin(binary)|存放二进制程序和系统常用命令,主要用于具体应用
 /sbin(system binary)|存放系统专用二进制程序和命令，需一定权限执行的命令
 /usr|存放用户使用的系统命令和应用程序等信息，类似windows的program files
 /usr/bin|存放后期安装的一些软件
 /usr/sbin|存放超级用户的一些管理程序
-/boot|存放操作系统引导文件
-/dev|设备文件目录，访问该目录文件，相当于访问某个设备。`/dev/cdrom/mnt`常用于挂载光驱
-/etc|存放有关系统配置的文件
+/boot|放置linux系统启动时用到的一些文件，如Linux的内核文件：/boot/vmlinuz，系统引导管理器：/boot/grub
+/dev|存放linux系统下的设备文件，访问该目录下某个文件，相当于访问某个设备，常用的是挂载光驱 mount /dev/cdrom /mnt
+/etc|系统配置文件存放的目录，不建议在此目录下存放可执行文件，重要的配置文件有/etc/inittab、/etc/fstab、/etc/init.d、/etc/X11、/etc/sysconfig、/etc/xinetd.d 
 /home|一般用户的主目录或ftp站点目录
-/mnt|装置文件系统的默认挂载点。如`/mnt/cdrom`常用于挂载光驱 
-/proc|系统核心与程序执行的信息
+/lib、/usr/lib、/usr/local/lib|系统使用的函数库的目录，程序在执行过程中，需要调用一些额外的参数时需要函数库的协助
+/lost+fount|系统异常产生错误时，会将一些遗失的片段放置于此目录下
+/mnt、/media|光盘默认挂载点，通常光盘挂载于 /mnt/cdrom 下，也不一定，可以选择任意位置进行挂载。 
+/proc|此目录的数据都在内存中，如系统核心，外部设备，网络状态，由于数据都存放于内存中，所以不占用磁盘空间，比较重要的目录有 /proc/cpuinfo、/proc/interrupts、/proc/dma、/proc/ioports、/proc/net/* 等
 /root|管理员主目录
-/tmp|用来存放暂存盘的目录
-/var|经常变动的文件目录，比如log
-/opt|存放额外安装的软件
+/tmp|一般用户或正在执行的程序临时存放文件的目录，任何人都可以访问，重要数据不可放置在此目录下
+/srv|服务启动之后需要访问的数据目录，如 www 服务需要访问的网页数据存放在 /srv/www 内
+/usr|应用程序存放目录，/usr/bin 存放应用程序，/usr/share 存放共享数据，/usr/lib 存放不能直接运行的，却是许多程序运行所必需的一些函数库文件。/usr/local: 存放软件升级包。/usr/share/doc: 系统说明文件存放目录。/usr/share/man: 程序说明文件存放目录。
+/var|放置系统执行过程中经常变化的文件，如随时更改的日志文件 /var/log，/var/log/message：所有的登录文件存放目录，/var/spool/mail：邮件存放的目录，/var/run:程序或服务启动后，其PID存放在该目录下
+/opt|给主机额外安装软件所存放的目录
 
 > which命令
 
@@ -69,6 +74,7 @@ $ which useradd
 | [`find [path] [-options] [expression]`](#212-find命令)|在目录中搜索文件|
 | [`ln [-options] source target`](#213-ln命令)|创建文件链接|
 | [`tar [-options] [file]`](#214-打包压缩)|打包解包文件|
+|[`zip [-options] [file]`](#214-打包压缩)|压缩或解压zip文件
 
 ### 2.1 cd命令
 ```sh
@@ -190,6 +196,7 @@ $ rm [-options] file
 
 |options|含义|
 |:-|:-|
+|`-i`|开启删除确认提示，所有待删除文件将逐次提示
 |`-r`|删除文件或 **递归删除目录** (包含子目录和文件)|
 |`-f`|强制删除，忽略不存在文件|
 
@@ -219,8 +226,10 @@ $ cp [-options] source_file target_file
 
 |options|含义|
 |:-|:-|
+|`-a`|	该选项通常在复制目录时使用，它保留链接、文件属性，并递归地复制目录，简单而言，保持文件原有属性。|
 |`-i`|开启覆盖文件提示。`cp`执行时会 **默认覆盖** 同名目标文件。建议每次使用`-i`进行安全复制|
 |`-r`|复制文件或 **递归复制目录** (包含子目录和文件)。格式为:`cp -r source_dir target_dir`|
+|`-v`|显示拷贝进度|
 
 #### 2) parameter
 * 目标文件若与源文件同名，则`target_file`参数可以只写目录部分，省略目标文件名。
@@ -245,6 +254,7 @@ $ mv [-options] source_file/dir target_file/dir
 |options|含义|
 |:-|:-|
 |`-i`|开启覆盖文件提示。`mv`执行时会 **默认覆盖** 同名目标文件。建议每次使用`-i`进行安全移动|
+|`-v`|显示移动进度|
 
 ```sh
 # 将～/Download/Python目录移动到 ～/Desktop
@@ -442,6 +452,7 @@ options|含义
 `-x`|解开档案文件
 `-v`|列出归档解档
 `-f`|指定档案文件名称。`-f`后面是tar包名称，所以在options中放在最后
+`-t`|列出档案中包含的文件
 `-z`|使用`gzip`压缩或解压
 `-j`|使用`bzip2`压缩或解压
 `-C`|解档或解压到指定目录。**目录必须存在**
@@ -459,6 +470,7 @@ $ tar -xvf languages.tar
 `gzip`是Linux下一种流行的压缩方式。
 * 用`gzip`压缩`tar`包文件后的压缩文件扩展名是`.tar.gz`，这是Linux中最常见的压缩格式
 * `tar`命令使用`-z`可以调用`gzip`对tar包进行压缩，方便实现打包压缩
+* 也可单独使用`gzip`压缩tar包或解压压缩文件，单使用较少。一般联合`tar`命令使用较多
 
 ```sh
 # 将English.txt,Chinese.txt,Europe(目录)压缩为languages.tar.gz
@@ -480,3 +492,9 @@ $ tar -jcvf languages.tar.bz2 English.txt Chinese.txt Europe
 # 将languages.tar.bz2解压到用户桌面
 $ tar -jxvf languages.tar.bz2 -C ~/Desktop
 ```
+
+##### 3) zip/uzip
+zip压缩格式不同于gzip和bzip2联合`tar`命令使用，zip可以指定文件或目录压缩到指定的压缩包中。`zip`格式的压缩包常用于各大平台操作系统。
+* 通过zip压缩文件的目标文件不需要指定扩展名，默认扩展名为zip。
+* 压缩文件：zip [-r] 目标文件(没有扩展名) 源文件
+* 解压文件：unzip -d 解压后目录文件 压缩文件
