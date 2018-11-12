@@ -6,7 +6,7 @@
 * [4. deb安装格式](#4-deb安装格式)
 * [5. 安装Chrome和Sogou](#5-安装chrome和sogou)
 * [6. Nginx安装和配置](#6-nginx安装和配置)
-* [7. CentOS配置FTP](#7-CentOS配置FTP)
+* [7. CentOS配置FTP](#7-centos配置ftp)
 
 ## 1. 设置服务器镜像源
 Ubuntu官方服务器在境外，连接速度较慢。为此Ubuntu提供了`选择最佳服务器`的功能，方便我们选择一个速度最快的镜像服务器。
