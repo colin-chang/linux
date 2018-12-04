@@ -419,5 +419,5 @@ $ sudo mysql.server start/stop/restart
 * 后台运行
 
 ```sh
-$ brew service start/stop/restart mysql
+$ brew services start/stop/restart mysql
 ```
