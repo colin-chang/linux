@@ -10,6 +10,7 @@ V2Ray(Project V) 相对于 Shadowsocks，V2Ray 更像全能选手，拥有更多
 系统要求：Ubuntu 14+ / Debian 7+ / CentOS 7+
 ```sh
 $ sudo -i
+$ cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 $ bash <(curl -s -L https://233yes.com/v2ray.sh)
 ```
 按照提示安装即可...

@@ -24,6 +24,7 @@ WireGuard使用UDP协议传输数据，在不使用的情况下默认不会传�
 
 ```sh
 $ sudo -i 
+$ cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 $ yum update
 $ yum install -y wget
 # 使用一键安装脚本

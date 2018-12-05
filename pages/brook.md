@@ -87,6 +87,7 @@ $ wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/d
 
 ```sh
 $ sudo -i
+$ cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 # 安装docker
 $ curl -fsSL https://get.docker.com -o get-docker.sh
 $ sudo sh get-docker.sh
