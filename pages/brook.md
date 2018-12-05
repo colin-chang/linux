@@ -96,7 +96,6 @@ $ docker run --net=host -d capton/brook-web /bin/bash -c "python brook-web.py 80
 
 **强烈推荐Brook-Web**，部署异常简单，网页管理异常方便。
 
-
 ### 2.2 客户端
 Brook官方提供了
 [Windows](https://github.com/txthinking/brook/releases/download/v20181212/Brook.exe)/
