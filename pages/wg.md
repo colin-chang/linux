@@ -1,4 +1,4 @@
-# WireGuard
+# 下一代VPN协议 - WireGuard 
 
 * [1.WireGuard简介](#1-wireguard简介)
 * [2.WireGuard使用](#2-wireguard上手)
@@ -14,9 +14,9 @@ WireGuard使用UDP协议传输数据，在不使用的情况下默认不会传�
 
 ## 2. WireGuard上手
 
-### 2.1 服务器
+### 2.1 服务端
 
-除了使用第三方提供的WireGuard节点外，相信小伙伴们已经迫不及待的想自建服务器，小试身手了，话不多说，这就操练起来。
+除了使用第三方提供的WireGuard节点外，相信小伙伴们已经迫不及待的想自建服务器，小试身手了，话不多说，这就操练起来吧...
 
 既然为Linux内核模式，那自然要部署在Linux上喽。WireGuard服务器搭建过程也非常简单，按照以下步骤执行即可。
 

@@ -9,3 +9,5 @@
 * [5 系统维护](pages/system.md)
 * [6 软件工具安装](pages/installsoftware.md)
 * [7 科学上网](pages/wg.md)
+    * [7.1 WireGuard](pages/wg.md)
+    * [7.2 Brook](pages/brook.md)
