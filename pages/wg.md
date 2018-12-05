@@ -73,10 +73,10 @@ $ cat /etc/wireguard/client.conf
 Ubuntu和Debian的安装过程与CentOS相同，只是使用的一键安装脚本不同，此处只提供差异的一键安装脚本，安装过程不再赘述。
 ``` sh
 # 一键安装wireguard 脚本 Ubuntu
-wget -qO- git.io/fpcnL | bash
+$ wget https://raw.githubusercontent.com/hongwenjun/vps_setup/master/ubuntu_wireguard_install.sh
 
 # 一键安装wireguard 脚本 Debian 9
-wget -qO- git.io/fptwc | bash
+$ wget https://raw.githubusercontent.com/hongwenjun/vps_setup/master/debian_wg_vpn.sh
 ```
 
 ## 2.2 客户端
