@@ -33,7 +33,9 @@ $ screen -dmS brook ./brook server -l :5468 -p xinzhe468brook # -l指定端口�
 ```
 
 #### 2.1.2 第三方一键安装脚本
-此脚本除了一键安装Brook还提供了管理功能。支持CentOS 6+ / Debian 6+ / Ubuntu 14.04 +
+此脚本除了一键安装Brook还提供了管理功能。
+
+系统要求：CentOS 6+ / Debian 6+ / Ubuntu 14.04 +
 
 ```sh
 # 切换到root

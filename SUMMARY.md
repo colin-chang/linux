@@ -11,3 +11,4 @@
 * [7 科学上网](pages/wg.md)
     * [7.1 WireGuard](pages/wg.md)
     * [7.2 Brook](pages/brook.md)
+    * [7.3 V2Ray](pages/v2ray.md)
