@@ -43,7 +43,7 @@ $ sudo -i
 # 校准时间
 $ cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 # 一键安装
-$ wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ss-go.sh && chmod +x ss-go.sh && bash ss-go.sh
+$ wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/brook.sh && chmod +x brook.sh && bash brook.sh
 ```
 按一下提示安装即可。
 ```
