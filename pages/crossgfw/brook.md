@@ -43,7 +43,7 @@ $ sudo -i
 # 校准时间
 $ cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 # 一键安装
-$ wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ss-go.sh && chmod +x ss-go.sh && bash ss-go.sh
+$ wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/brook.sh && chmod +x brook.sh && bash brook.sh
 ```
 按一下提示安装即可。
 ```
@@ -97,7 +97,7 @@ $ docker run --net=host -d capton/brook-web /bin/bash -c "python brook-web.py 80
 ```
 安装完成之后打开直接访问 http://ip 即可。用户名和密码默认都是 admin
 
-**强烈推荐Brook-Web**，部署异常简单，网页管理异常方便。
+Brook-Web虽然简单易用，然而程序依然不太稳定，建议读者谨慎使用。
 
 ### 2.2 客户端
 Brook官方提供了
@@ -109,3 +109,4 @@ Brook官方提供了
  覆盖全平台的客户端，使用非常简单，不再赘述。
 
 ![brook手机端](../../../img/crossgfw/brook/brook.jpg)
+
