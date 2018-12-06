@@ -97,7 +97,7 @@ $ docker run --net=host -d capton/brook-web /bin/bash -c "python brook-web.py 80
 ```
 安装完成之后打开直接访问 http://ip 即可。用户名和密码默认都是 admin
 
-**强烈推荐Brook-Web**，部署异常简单，网页管理异常方便。
+Brook-Web虽然简单易用，然而程序依然不太稳定，建议读者谨慎使用。
 
 ### 2.2 客户端
 Brook官方提供了
