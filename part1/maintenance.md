@@ -17,6 +17,13 @@ $ date      #查看系统时间
 $ cal -y    # 查看当年日历
 ```
 
+> 服务器时间校准
+
+```sh
+# 同步本地时区(北京时间)到远程服务器
+$ cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+```
+
 ## 2. 磁盘管理
 
 命令|作用
