@@ -21,5 +21,5 @@ GFW阻挡了我们享受网络自由，但人们对于自由的渴望与追求�
 现有的VPN和SS/SSR技术算是比较流行的翻墙技术，但也相对陈旧了一些，我们这里就不做过多介绍了。我们这里主要介绍一下目前相对稳定安全快速的V2Ray，小众种子选手Brook和下一代VPN未来的WireGuard。
 
 * [下一代VPN协议 - WireGuard](wg.md)
-* [全能翻墙工具 - V2Ray](wg.md)
+* [全能翻墙工具 - V2Ray](v2ray.md)
 * [小众好用的代理软件 — Brook](brook.md)
