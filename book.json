@@ -1,6 +1,6 @@
 {
-    "title": "Linux入门",
-    "description": "Linux学习笔记",
+    "title": "Linux-运维之美",
+    "description": "Linux—流行的服务器操作系统",
     "plugins": [
         "disqus",
         "-lunr", "-search", "search-plus",
@@ -47,7 +47,7 @@
             }
         },
         "sitemap": {
-            "hostname": "https://colinchang.gitbook.io/linux/"
+            "hostname": "http://colin-chang.site/book/linux/"
         },
         "sharing": {
             "facebook": true,
