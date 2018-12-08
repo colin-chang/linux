@@ -3,8 +3,7 @@
 MySQL是当下流行的跨平台高性能的数据库。下面我们简单的介绍以下Ubuntu和mac OS中的安装和配置方法
 
 ## 1. 安装MySQL
-### 1) Ubuntu
-### 2) mac OS
+### 1) mac OS
 ```sh
 # 清理历史。若为首次安装则可跳过此部分
 $ brew uninstall mysql
@@ -18,8 +17,7 @@ $ brew install mysql
 ```
 
 ## 2. 简单配置
-### 1) Ubuntu
-### 2) mac OS
+### 1) mac OS
 ```sh
 # 修改目录权限。否则会出现类似 "ERROR! Manager of pid-file quit without updating file."
 $ sudo chmod -R 757 /usr/local/var/mysql

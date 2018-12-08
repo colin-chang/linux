@@ -23,7 +23,7 @@
 * [1. FTP](part2/ftp.md)
 * [2. MySQL](part2/mysql.md)
 * [3. Nginx](part2/nginx.md)
-* [4. 系统界面](part2/gui.md)
+* [4. 界面系统](part2/gui.md)
 
 ## Part Ⅲ Linux编程
 

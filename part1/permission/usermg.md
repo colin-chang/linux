@@ -10,6 +10,7 @@
 `groupdel [-options] GROUP` | 删除用户组
 `cat /etc/group` | 查看系统所有用户组
 `chgrp [-options] GROUP FILE`|修改文件或目录所在组。`-R`表示递归修改
+`gpasswd -options GROUP`|管理用户组。`-a`表示向组中添加用户,`-d`表示从组中移除用户
 
 ```sh
 # 添加dev用户组
@@ -23,7 +24,16 @@ $ cat /etc/group
 
 # 将Code目录及其子目录和文件所在组递归修改为dev
 $ sudo chgrp -R dev Code
+
+# 将colin用户添加到sudo组中
+$ sudo gpasswd -a colin sudo
+
+# 将colin用户从sudo组中移除
+$ sudo gpasswd -d colin sudo
 ```
+
+添加用户到组中除了使用`gpasswd -a user group`命令，也可以使用`usermod -a -G group user`。
+
 
 ## 2. 用户管理
 
@@ -95,8 +105,12 @@ options|含义
 :-|:-
 `-m`|自动创建用户主目录
 `-g`|指定用户所属组。**若不指定会自动创建一个用户组**
+`-d`|指定用户主目录为现有目录
 
 创建用户最好添加`-m`创建用户主目录，否则后续创建目录、设置权限非常繁琐。如果忘记，**最简单的方法就是立即删除用户，重新创建**
+
+通过`-d`指定用户主目录后，如果用户可能对此目录没有权限则需要赋予相应权限，比如添加到所有者组或者修改目录所有者。
+
 
 ```sh
 # 创建colin用户并分配到dev组，同时创建用户主目录
@@ -189,7 +203,7 @@ options|含义
 
 ```sh
 # 将colin用户附加到sudo组中
-$ sudo usermod -G sudo colin
+$ sudo usermod -a -G sudo colin
 ```
 ##### 2) 修改 Shell
 * Ubuntu中`useradd`添加的用户默认shell为dash(`/bin/sh`)，而系统用户使用的shell默认为bash(`/bin/bash`)。bash在颜色渲染和使用上更加方便。
