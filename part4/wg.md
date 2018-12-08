@@ -4,7 +4,7 @@
 * [2.WireGuard使用](#2-wireguard上手)
 * [3.WireGuard](#3-配置解析)
 
-## 1. WireGuard简介
+## 1. WireGuard 简介
 [WireGuard](https://www.wireguard.com)被视为下一代VPN协议，用来替代OpenVPN，IPSec等VPN协议。
 目前支持Linux,Windows,mac OS,Android,iOS等主流平台。
 
@@ -12,7 +12,7 @@ WireGuard协议作为Linux内核模块运行，所以效率极高。使用了最
 
 WireGuard使用UDP协议传输数据，在不使用的情况下默认不会传输任何 UDP 数据包，所以比常规VPN省电很多，可以像SS一样一直挂着使用。WireGuard协议的速度瞬秒其它VPN协议。
 
-## 2. WireGuard上手
+## 2. WireGuard 上手
 
 ### 2.1 服务端
 
@@ -134,7 +134,7 @@ TunSafe为Windows平台提供了简单易用WireGuard[客户端](https://tunsafe
 
 ![TunSafe for Windows](../../img/part4/wg-windows-config.jpeg)
 
-##### WireGuard分流
+##### WireGuard 分流
 
 SS/SSR用户可能习惯了PAC模式的分流，WireGuard同样支持分流。Windows版的分流较为简单，查看[此文档](https://github.com/lmc999/auto-add-routes)，几步操作实现分流。
 

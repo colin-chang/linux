@@ -1,6 +1,6 @@
 # 小众好用的代理软件 — Brook
 
-## 1. Brook简介
+## 1. Brook 简介
 [Brook](https://github.com/txthinking/brook) 是一个高效的 Socks5 代理软件，官方支持Windows、Linux、MacOS、IOS、Android、树莓派等设备，同时是使用 Golang 语言编写，安装、使用异常简单。
 
 Brook 支持 自主研发 Brook（新版） 协议+Stream Brook（旧版）协议、Shadowsocks 协议、SOCKS5 协议、TCP/UDP 转发、SOCKS5代理转HTTP代理 等功能。
@@ -9,7 +9,7 @@ Brook 支持 UDP转发，无需任何设置。
 
 支持单端口和多端口(每个端口可以单独设定密码)，这点类似于 Shadowsocks 和 ShadowsocksR 的单用户服务端。
 
-## 2. Brook上手
+## 2. Brook 上手
 
 ### 2.1 服务端
 除了使用第三方提供的Brook节点外，相信小伙伴们已经迫不及待的想自建服务器，小试身手了，话不多说，这就操练起来吧...

@@ -32,3 +32,4 @@
 * [2. WireGuard](part4/wg.md)
 * [3. V2Ray](part4/v2ray.md)
 * [4. Brook](part4/brook.md)
+* [5. Telegram](part4/tg.md)
