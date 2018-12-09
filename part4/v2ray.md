@@ -14,13 +14,13 @@ $ cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 $ bash <(curl -s -L https://233yes.com/v2ray.sh)
 ```
 按照提示安装即可...
-![V2Ray安装选项](../../img/part4/v2ray-install.png)
+![V2Ray安装选项](../img/part4/v2ray-install.png)
 
 配置 Shadowsocks(可选)
-![V2Ray安装选项](../../img/part4/v2ray-ssr.png)
+![V2Ray安装选项](../img/part4/v2ray-ssr.png)
 
 安装完成
-![V2Ray安装完成](../../img/part4/v2ray-install-done.png)
+![V2Ray安装完成](../img/part4/v2ray-install-done.png)
 
 > 常用操作
 
