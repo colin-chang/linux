@@ -130,6 +130,8 @@ Host ColinMac
     User colin
     Port 22
 ```
+*以上配置中只有`HostName`是必选项，其他都可按需省略。*
+
 配置完成后远程管理命令中就可以直接使用别名访问了，如
 ```sh
 $ ssh ColinMac
@@ -160,20 +162,49 @@ $ ssh-keygen
 $ ssh-copy-id user@hostname   # 文件会自动上传为服务器特定文件 ～/.ssh/authorized_keys
 ```
 
-> Google Cloud 密钥链接
+完成以上步骤后直接使用`ssh ColinUbuntu`即可登录，服务器地址和密码均不用录入。
 
-出于安全考虑，GCP(Google Cloud Platform)的公钥文件一般需要人工填写到平台的`元数据`配置中，且GCP只允许使用密钥文件验证登录方式进行连接。
+#### 3) 免密钥文件登录
 
+出于安全考虑，大部分服务器提供商如要求使用密钥文件进行远程登录，如GCP和AWS。下面我们以GCP为例来看如何简化连接操作,这搞起来吧...
+
+##### 1⃣️ 生成密钥对
 ```sh
-# 以非对称加密方式生成密钥文件my-ssh-key保存到~/.ssh目录下。
-# 密钥文件以colin(将作为GCP的用户名)作为注释
+$ ssh-keygen -t rsa -f ~/.ssh/[KEY_FILENAME] -C [USERNAME]
+$ chmod 400 ~/.ssh/[KEY_FILENAME]
+```
+https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#createsshkeys
 
-$ ssh-keygen -t rsa -f ~/.ssh/my-ssh-key -C colin
+##### 2⃣️ 上传公钥
+在`Compute Engine`页面左侧菜单找到`元数据`,将上一步生成的公钥文件(KEY_FILENAME_pub)内容添加到SSH密钥中即可。
 
-# 连接GCP
-$ ssh -i ~/.ssh/my-ssh-key colin@35.236.93.139
+##### 3⃣️ 连接GCP
+使用以下命令登录即可
+```sh
+$ ssh -i ~/.ssh/KEY_FILENAME [USERNAME]@[IP_ADDRESS]
 ```
 
+##### 4⃣️ 简化登录
+以上是GCP官方步骤，使用IdentityFile方式进行登录，每次ssh登录都要通过`-i`选项指定私钥路径比较繁琐，我们可以将密钥文件添加到ssh客户端config中以简化连接命令。
+
+```json
+Host *
+ AddKeysToAgent yes
+ UseKeychain yes
+
+Host tu
+   HostName IP_ADDRESS
+   Port 22
+   IdentityFile ~/.ssh/gcp
+```
+按照以上配置添加到～/.ssh/config中
+
+```sh
+# 登录GCP
+$ ssh tu
+```
+
+> 除了连接云服务器，`Github`等服务也可是通过以上方式连接
 
 ## 5. scp命令
 ```sh
