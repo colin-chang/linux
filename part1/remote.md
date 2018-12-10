@@ -197,16 +197,21 @@ Host *
 Host tu
    HostName IP_ADDRESS
    Port 22
+   User USERNAME
    IdentityFile ~/.ssh/gcp
 ```
 按照以上配置添加到～/.ssh/config中
 
 ```sh
-# 登录GCP
-$ ssh tu
+# 后台运行ssh-agent
+$ eval "$(ssh-agent -s)"
+# 添加密钥到ssh-agent
+$ ssh-add -K ~/.ssh/gcp
 ```
 
-> 除了连接云服务器，`Github`等服务也可是通过以上方式连接
+完成以上配置后，连接服务器只需使用 `ssh tu`即可。
+
+> 除了连接云服务器，`GitHub`等服务也可是通过以上方式连接
 
 ## 5. scp命令
 ```sh
