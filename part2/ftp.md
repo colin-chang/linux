@@ -60,9 +60,9 @@ $ sudo service vsftpd restart
 
     # 创建user1,user2用户到ftp组并指定主目录为共享目录
     $ sudo useradd -d /usr/share/ftp/ -g ftp user1
-    $ sudo pssswd user1
+    $ sudo passwd user1
     $ sudo useradd -d /usr/share/ftp/ -g ftp user2
-    $ sudo pssswd user2
+    $ sudo passwd user2
     
     # user1,user2 都可登录ftp并共享/usr/share/ftp/目录
     ```
