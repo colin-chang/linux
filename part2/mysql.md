@@ -13,8 +13,20 @@ $ sudo rm -rf /usr/local/var/mysql
 # 安装
 $ brew update
 $ brew install mysql
-
 ```
+
+### 2) Ubuntu
+```sh
+# 安装服务端/客户端。服务端安装时按提示设定root用户密码即可
+$ sudo apt install mysql-server/mysql-client
+
+# 客户端连接数据库 uid和pwd分别替换为用户名密码，如 mysql -ucolin -p123
+$ mysql -uuid -ppwd
+
+# 退出mysql客户端
+> quit;
+```
+连接成功之后进入mysql客户端后可以直接执行SQL指令，如`select now();`，**SQL指令必须已英文分号结尾**。
 
 ## 2. 简单配置
 ### 1) mac OS
@@ -57,4 +69,30 @@ $ sudo mysql.server start/stop/restart
 
 ```sh
 $ brew services start/stop/restart mysql
+```
+
+### 2) Ubuntu
+基于安全考虑，mysql默认只能本机连接。如果需要远程连接，需要按照如下步骤修改配置。生产环境中为了安全我们一般会配置为只允许指定IP连接到mysql。
+
+(1) 修改配置文件
+```sh
+# 不同mysql版本配置文件路径可能不同，可自行搜索
+$ sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf 
+
+# 注视掉如下内容
+# bind-addres = 127.0.0.1
+```
+(2)重启mysql服务
+```sh
+$ sudo /etc/init.d/mysql restart
+```
+(3)开放IP
+```sh
+# 连接到mysql
+$ mysql -uuid -ppwd
+
+# 开放IP。 ip,uid,pwd替换为要开放的IP地址和mysql的用户名密码即可。
+mysql> grant all privileges on *.* to uid@"ip" identified by "pwd" with grant option;
+
+mysql> flush privileges;
 ```

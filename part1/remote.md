@@ -81,11 +81,24 @@ $ ping [-options] destination
 ## 4. ssh命令
 ### 4.1 ssh基础使用
 * ssh客户端是一种使用`Secure Shell(ssh)`协议连接到运行了ssh服务端的远程服务器上。
-* ssh是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议
+* ssh是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。
     * 有效防止远程管理过程中的信息泄漏
     * 传输 **数据加密**，能够防止DNS和IP欺骗
     * 传输 **数据压缩**，加快传输速度
-* Mac和Linux中默认已安装ssh客户端，可直接在终端中使用ssh命令。Windows则需手动安装ssh客户端，较常用的Windows SSH客户端有`PuTTY`和`XShell`
+* OpenSSH 是 SSH协议的免费开源实现。OpenSSH提供了服务端程序(`openssh-server`)和客户端工具(`openssh-client`)。
+    * Mac和Linux中默认已安装ssh客户端，可直接在终端中使用ssh命令。Windows则需手动安装ssh客户端，较常用的Windows SSH客户端有`PuTTY`和`XShell`。
+    * OpenSSH服务端常用命令
+    ```sh
+    # 安装服务端/客户端(Ubuntu)
+    $ sudo apt install openssh-server/openssh-client
+
+    # 查看ssh服务是否开启
+    $ netstat -tlp | grep ssh
+
+    # 启动/停止/重启 ssh服务
+    $ sudo /etc/init.d/ssh start/stop/restart
+    ```
+    * ssh服务端配置文件默认为`/etc/ssh/sshd_config`。可以按需修改默认22端口等配置。 
 
 ```sh
 # 命令格式
