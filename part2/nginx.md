@@ -62,7 +62,7 @@ server {
 
 ### 2) mac OS
 * 默认配置文件在`/usr/local/etc/nginx/`目录中
-* mac中可以使用`brew uninstall nginx`卸载nginx，但会有配置文件等遗留文件导致重装后存在问题。可以使用`find /usr/local/ -name "*nginx*"`命令查找所有相关文件并手动清理后再重装。
+* mac中可以使用`brew uninstall nginx`卸载nginx，但会有配置文件等遗留文件导致重装后存在问题。使用`rm -rf $(find /usr/local/ -name "*nginx*")`命令查找所有相关文件并清理后再重装。
 * mac中配置nginx若提示某系目录和文件不存在错误，手动创建相应文件即可
 
 > nginx相关命令
@@ -86,7 +86,31 @@ $ sudo nginx -s reload
 
 > 若需通过外网访问nginx需要在服务器防火墙放开对应端口
 
-## 3. 虚拟主机
+## 3. Docker 方式安装
+
+```sh
+# 获取nginx镜像
+$ docker pull nginx
+
+# 创建nginx容器
+$ sudo docker run \
+--name my-nginx \
+-d \                                                      # 后台运行容器
+-p 8000:80 \                                              # 映射宿主8000端口到容器80端口
+-v ~/nginx/default.conf:/etc/nginx/conf.d/default.conf \  # 挂载宿主配置文件~/nginx/default.conf到容器中
+--link lottery:web \                                      # 链接到lottery容器并命名为web
+nginx
+
+# 启动/停止/重启mysql容器
+$ docker start/stop/restart my-nginx
+
+# 删除mysql容器
+$ docker rm my-nginx
+```
+
+详尽的nginx docker配置参见[Docker Hub](https://hub.docker.com/_/nginx)
+
+## 4. 虚拟主机
 虚拟主机是一种特殊的软硬件技术，它可以将网络上的一台物理主机分成多个虚拟主机，每个虚拟主机可以独立对外提供www服务，这样就可以实现一台主机对外提供多个Web服务，每个虚拟主机之间是独立的，互不影响。
 
 ### 3.1 三种虚拟主机

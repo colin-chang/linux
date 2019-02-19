@@ -26,6 +26,7 @@ $ mysql -uuid -ppwd
 # 退出mysql客户端
 > quit;
 ```
+
 连接成功之后进入mysql客户端后可以直接执行SQL指令，如`select now();`，**SQL指令必须已英文分号结尾**。
 
 ## 2. 简单配置
@@ -82,10 +83,12 @@ $ sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf
 # 注视掉如下内容
 # bind-addres = 127.0.0.1
 ```
+
 (2)重启mysql服务
 ```sh
 $ sudo /etc/init.d/mysql restart
 ```
+
 (3)开放IP
 ```sh
 # 连接到mysql
@@ -96,3 +99,26 @@ mysql> grant all privileges on *.* to uid@"ip" identified by "pwd" with grant op
 
 mysql> flush privileges;
 ```
+
+## 3. Docker 方式安装
+
+```sh
+# 获取mysql镜像
+$ docker pull mysql
+
+# 创建mysql容器 指定root密码为123123
+$ docker run \
+--name mysql-test \
+-e MYSQL_ROOT_PASSWORD=123123 \
+-d \
+-p 3306:3306 \
+mysql \
+
+# 启动/停止/重启mysql容器
+$ docker start/stop/restart mysql-test
+
+# 删除mysql容器
+$ docker rm mysql-test
+```
+
+详尽的mysql docker配置参见[Docker Hub](https://hub.docker.com/_/mysql)
