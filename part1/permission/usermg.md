@@ -50,18 +50,34 @@ $ sudo gpasswd -d colin sudo
 [`usermod [-options] user`](#252-usermod-命令)|修改用户信息
 
 ### 2.1 root 用户
-* Linux系统中`root`账号通常用于系统维护和管理，其对操作系统所有资源 **具有所有访问权限**
-* Linux安装过程中，系统会自动创建一个用户账号，而这个默认用户称为“标准用户”
-* 标准用户执行命令没有权限时，可以在命令开始添加`sudo`来执行。
-* `sudo`命令用来以其他身份来执行命令，预设的身份为`root`
-* 用户使用`sudo`时需要输入密码，密码5分钟有效 
-* 只有`sudo`用户组中用户才可使用`sudo`,未经授权用户使用`sudo`会发警告邮件给管理员
+Linux系统中`root`账号通常用于系统维护和管理，其对操作系统所有资源 **具有所有访问权限**。
+若要切换到root用户，参阅 [切换到root用户](#switchroot)
+
+`sudo`命令用来以其他身份来执行命令，预设的身份为`root`。用户使用`sudo`时需要输入密码，密码5分钟有效。 
 
 ```sh
 $ sudo rm -r Application      # 以管理员身份删除Application目录
 ```
 
-若要切换到root用户，参阅 [切换到root用户](#switchroot)
+只有特定用户才可使用`sudo`,未经授权用户使用`sudo`会发警告邮件给管理员。不同的Linux发行版中授权`sudo`的方式略有区别。
+
+#### 1) Ubuntu/Debian
+
+在`sudo`组中的用户即可使用`sudo`。将指定用户加入`sudo`组中即可。
+```sh
+# 将colin用户添加到sudo组中
+$ gpasswd -a colin sudo
+```
+#### 2) CentOS
+
+在`sudoers`文件中列出`sudo`用户。将指定用户加入`sudoers` 文件中即可。
+```sh
+# 查看 sudoers 路径
+$ whereis sudoers # 一般默认为 /etc/sudoers
+```
+在`sudoers`加入要授权的用户即可。
+
+![CentOS sudoers](../../img/part1/sudoers.jpg)
 
 ### 2.2 切换用户
 ```sh
