@@ -4,8 +4,9 @@
 |:-|:-|
 | `logout [n]`|注销登录的shell。不在shell执行报错|
 | [`shutdown [-options] [time]`](#1-shutdown命令)|关机/重启|
-| [`ifconfig [-options]`](#2-ifconfig命令)|查看或配置网卡信息|
-| [`ping [-options] destination`](#3-ping命令)|检测到目标地址连接通讯是否正常|
+| [`ifconfig [-options]`或`ip addr`](#21-ifconfig命令)|查看或配置网卡信息|
+| [`ping [-options] destination`](#31-ping命令)|检测到目标地址连接通讯是否正常|
+| [`curl [-options] url`](#32-curl命令)|发送网路请求到指定地址|
 | [`ssh [-options] [user@hostname]`](#4-ssh命令)|远程连接服务器|
 | <a href='#5-scp命令'>`scp [-options] [[user@]host1:]file1 [[user@]host2:]file2`</a>|远程复制文件|
 
@@ -67,8 +68,10 @@ $ ifconfig
 # 过滤查看IP地址
 $ ifconfig | grep inet
 ```
+除了`ifconfig`命令，也常用`ip addr`来查看网路配置。
 
-## 3. ping命令
+## 3. 网络
+### 3.1 ping命令
 ```sh
 # 命令格式
 $ ping [-options] destination
@@ -77,6 +80,24 @@ $ ping [-options] destination
 * `ping`一般用于检测当前计算机到目标计算机之间的网络是否通畅。我们给目标IP发送一个数据包，对方返回一个包，根据返回包的时间我们可以确定目标计算机是否存在并且工作正常以及网络链接速度。
 * Linux中`ping`命令不会自动停止，可以使用`Ctrl + C`退出。
 * `ping 127.0.0.1` 可以测试本机网卡是否正常工作 
+
+### 3.2 curl命令
+```sh
+# 命令格式
+$ curl [options...] url
+```
+
+* `curl`一般用于发送网路请求到指定URL，也可以用于检测网路连通性。如果很多人使用浏览器访问百度以检测网络可用性。
+* 常用配合`-o`用于下载网路资源。Ubuntu下也可以使用其`wget`命令。
+
+```sh
+# 请求 https://colin-chang.site
+$ curl https://colin-chang.site
+
+# 下载
+$ curl -o index.html https://colin-chang.site
+$ wget https://colin-chang.site # Linux only
+```
 
 ## 4. ssh命令
 ### 4.1 ssh基础使用
