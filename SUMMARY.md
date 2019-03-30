@@ -25,11 +25,9 @@
 * [3. Nginx](part2/nginx.md)
 * [4. 界面系统](part2/gui.md)
 
-## Part Ⅲ Linux编程
-
-## Part IV - 科学上网
-* [1. 科学上网](part4/crossgfw.md)
-* [2. WireGuard](part4/wg.md)
-* [3. V2Ray](part4/v2ray.md)
-* [4. Brook](part4/brook.md)
-* [5. Telegram](part4/tg.md)
+## Part Ⅲ - 科学上网
+* [1. 科学上网](part3/crossgfw.md)
+* [2. WireGuard](part3/wg.md)
+* [3. V2Ray](part3/v2ray.md)
+* [4. Brook](part3/brook.md)
+* [5. Telegram](part3/tg.md)
