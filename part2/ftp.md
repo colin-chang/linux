@@ -98,3 +98,37 @@ https://filezilla-project.org/download.php?type=server 下载服务端软件后�
 ![启动TLS模式](../img/part2/tls.jpg '设置TLS模式')
 ![TLS证书](../img/part2/certification.jpg '生成证书')
 按照图示启用TLS模式并生成TLS证书。在FTP客户端连接服务器，并信任证书即可。
+
+## 3. Docker 方式安装
+### 3.1 FTP
+```sh
+# 获取vsftpd镜像
+$ docker pull fauria/vsftpd
+
+# 创建vsftpd容器
+$ docker run -d -v /home/colin/shared:/home/vsftpd \
+--name vsftpd --restart=always \
+-p 20:20 -p 21:21 -p 21100-21110:21100-21110 \
+-e PASV_ADDRESS=127.0.0.1 -e PASV_MIN_PORT=21100 -e PASV_MAX_PORT=21110 \
+-e FTP_USER=colin -e FTP_PASS=123123 \
+fauria/vsftpd
+
+# 启动/停止/重启vsftpd容器
+$ docker start/stop/restart vsftpd
+
+# 删除vsftpd容器
+$ docker rm vsftpd
+```
+
+详尽的vsftpd docker配置参见[Docker Hub](https://hub.docker.com/r/fauria/vsftpd)。
+
+### 3.2 SFTP
+使用以上FTP方式时可能会遇到"FileZilla尝试连接“ECONNREFUSED - 连接被服务器拒绝”错误。我们可以尝试使用SFTP协议，即使用SSH协议传输。通过以下方式启动vsftpd容器即可，不需要指定用户名密码和目录。
+
+```sh
+$ docker run -d -p 21:21 --name vsftpd fauria/vsftpd
+```
+
+此时我们使用客户端通过SFTP协议连接，任何系统用户都可以使用自身用户名密码登录FTP服务器，目录为用户主目录。与SSH连接相同。
+
+![SFTP](../img/part2/sftp.jpg)
