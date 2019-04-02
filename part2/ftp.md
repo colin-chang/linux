@@ -104,9 +104,10 @@ https://filezilla-project.org/download.php?type=server 下载服务端软件后�
 ```sh
 # 获取vsftpd镜像
 $ docker pull fauria/vsftpd
-
+# 创建目录开放权限
+$ cd && mkdir ftp-repository && chmod -R 777 ftp-repository
 # 创建vsftpd容器
-$ docker run -d -v /home/colin/shared:/home/vsftpd \
+$ docker run -d -v $PWD/ftp-repository:/home/vsftpd \
 --name vsftpd --restart=always \
 -p 20:20 -p 21:21 -p 21100-21110:21100-21110 \
 -e PASV_ADDRESS=127.0.0.1 -e PASV_MIN_PORT=21100 -e PASV_MAX_PORT=21110 \
@@ -119,6 +120,8 @@ $ docker start/stop/restart vsftpd
 # 删除vsftpd容器
 $ docker rm vsftpd
 ```
+
+以上可以使用 colin/123123 登录FTP并使用`~/ftp-repository/colin`目录。
 
 使用FileZilla客户端连接时如果出现"FileZilla尝试连接“ECONNREFUSED - 连接被服务器拒绝”错误，修改传输模式为主动模式即可。
 
