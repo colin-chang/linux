@@ -120,10 +120,14 @@ $ docker start/stop/restart vsftpd
 $ docker rm vsftpd
 ```
 
+使用FileZilla客户端连接时如果出现"FileZilla尝试连接“ECONNREFUSED - 连接被服务器拒绝”错误，修改传输模式为主动模式即可。
+
+![主动模式](../img/part2/activemode.jpg)
+
 详尽的vsftpd docker配置参见[Docker Hub](https://hub.docker.com/r/fauria/vsftpd)。
 
 ### 3.2 SFTP
-使用以上FTP方式时可能会遇到"FileZilla尝试连接“ECONNREFUSED - 连接被服务器拒绝”错误。我们可以尝试使用SFTP协议，即使用SSH协议传输。通过以下方式启动vsftpd容器即可，不需要指定用户名密码和目录。
+我们可以尝试使用SFTP协议，即使用SSH协议传输。通过以下方式启动vsftpd容器即可，不需要指定用户名密码和目录。
 
 ```sh
 $ docker run -d -p 21:21 --name vsftpd fauria/vsftpd
