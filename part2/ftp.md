@@ -88,7 +88,7 @@ https://filezilla-project.org/download.php?type=server 下载服务端软件后�
 ![设置密码](../img/part2/passwd.jpg '设置FileZilla用户密码')
 
 切换到Shared folders，添加共享目录并勾选相应权限：
-![添加共享目录](../img/choosefolder.jpg '设置FileZilla共享目录')
+![添加共享目录](../img/part2/choosefolder.jpg '设置FileZilla共享目录')
 ![设置共享目录权限](../img/part2/setpermission.jpg '设置FileZilla权限')
 
 被动模式设置(Passive mode)。FTP的客户端默认以Passive mode连接服务器，Filezilla会随机打开1-65535之间的一个端口。可以根据实际客户端连接数调整开放端口数量。设置完成之后需要在**服务器防火墙放开对应的端口**。Google Cloud等服务器，另外还需要在服务器控制台中放开指定端口。
@@ -126,6 +126,12 @@ $ docker rm vsftpd
 使用FileZilla客户端连接时如果出现"FileZilla尝试连接“ECONNREFUSED - 连接被服务器拒绝”错误，修改传输模式为主动模式即可。
 
 ![主动模式](../img/part2/activemode.jpg)
+
+如果使用Windows客户端出现如下图所示的问题，可以尝试从防火墙放开Filezilla FTP Cliet。
+
+![FTP读取目录列表失败](../img/part2/ftp-error.jpg)
+
+![开放防火墙](../img/part2/ftp-firewall.jpg)
 
 详尽的vsftpd docker配置参见[Docker Hub](https://hub.docker.com/r/fauria/vsftpd)。
 
