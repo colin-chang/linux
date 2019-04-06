@@ -71,6 +71,26 @@ $ echo Hello > a.txt
 $ tree -d >> a.txt
 ```
 
+`echo`和重定向命令经常一起使用以将输出的文本保存到文件中。
+
+如果`echo`输出内容较为复杂如包含多个空格或换行，务必使用引号包裹以避免被解析为多个命令参数。**如果`echo`输出内容换行中包含`\`等特殊字符，必须使用单引号包裹才能保留换行，这在docker命令中常见。**
+
+```sh
+# 错误用法。双引号内容中有'\',换行将被忽略
+$ echo "docker run \
+-d \
+--name my-mysql \
+-e MYSQL_ROOT_PASSWORD=pwd \
+mysql"
+
+# 正确用法。使用单引号，换行将被保留
+$ echo 'docker run \
+-d \
+--name my-mysql \
+-e MYSQL_ROOT_PASSWORD=pwd \
+mysql'
+```
+
 ### 2.2 管道
 管道是将一个命令的输出作为另一个命令的输入。可以理解为现实生活中一根管子，管子一头塞东西进去，另一头取东西出来。
 
