@@ -112,7 +112,7 @@ $ docker run \
 -e MYSQL_ROOT_PASSWORD=123123 \
 -d \
 -p 3306:3306 \
-mysql \
+mysql
 
 # 启动/停止/重启mysql容器
 $ docker start/stop/restart mysql-test

@@ -202,31 +202,31 @@ $ ssh-copy-id user@hostname   # 文件会自动上传为服务器特定文件 �
 
 出于安全考虑，大部分服务器提供商如要求使用密钥文件进行远程登录，如GCP和AWS。下面我们以GCP为例来看如何简化连接操作,这搞起来吧...
 
-##### 1⃣️ 生成密钥对
+##### A 生成密钥对
 ```sh
 $ ssh-keygen -t rsa -f ~/.ssh/[KEY_FILENAME] -C [USERNAME]
 $ chmod 400 ~/.ssh/[KEY_FILENAME]
 ```
 https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#createsshkeys
 
-##### 2⃣️ 上传公钥
+##### B 上传公钥
 在`Compute Engine`页面左侧菜单找到`元数据`,将上一步生成的公钥文件(KEY_FILENAME_pub)内容添加到SSH密钥中即可。
 
 ![GCP上传密钥](../img/part1/ssh-gcp.jpg)
 
-##### 3⃣️ 连接GCP
+##### C 连接GCP
 使用以下命令登录即可
 ```sh
 $ ssh -i ~/.ssh/KEY_FILENAME [USERNAME]@[IP_ADDRESS]
 ```
 
-##### 4⃣️ 简化登录
-以上是GCP官方步骤，使用IdentityFile方式进行登录，每次ssh登录都要通过`-i`选项指定私钥路径比较繁琐，我们可以将密钥文件添加到ssh客户端config中以简化连接命令。
+##### D 简化登录
+以上是GCP官方步骤，使用IdentityFile方式进行登录，每次ssh登录都要通过`-i`选项指定私钥路径比较繁琐，我们可以将密钥文件添加到ssh客户端config中以简化连接命令。
 
 ```json
 Host *
  AddKeysToAgent yes
- UseKeychain yes
+ UseKeychain yes  # only for mac
 
 Host tu
    HostName IP_ADDRESS
