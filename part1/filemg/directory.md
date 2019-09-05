@@ -13,7 +13,6 @@
 / | 根目录，一般根目录下只存放目录，在Linux下有且只有一个根目录。所有的东西都是从这里开始
 /bin(binary)|存放二进制程序和系统常用命令,主要用于具体应用
 /sbin(system binary)|存放系统专用二进制程序和命令，需一定权限执行的命令
-/usr|存放用户使用的系统命令和应用程序等信息，类似windows的program files
 /usr/bin|存放后期安装的一些软件
 /usr/sbin|存放超级用户的一些管理程序
 /boot|放置linux系统启动时用到的一些文件，如Linux的内核文件：/boot/vmlinuz，系统引导管理器：/boot/grub
