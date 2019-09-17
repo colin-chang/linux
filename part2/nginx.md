@@ -153,7 +153,7 @@ server{
 
 ### 3.2 静态服务器配置
 
-* 使用nginx虚拟主机技术科技在nginx上挂在多个Web服务
+* 使用nginx虚拟主机技术可以在nginx挂载多个Web服务
 * 如果使用nginx挂载网站，其默认文件访问路径一般通过root属性指定。Linux中默认使用绝对路径`/var/www/html/`，Mac中默认使用相对路径`html`。
 * **建议将网站文件放在nginx的root指定目录或其子目录下，其他目录可能导致nginx无权访问，造成nginx莫名出现404错误**
 
