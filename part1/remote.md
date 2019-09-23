@@ -91,12 +91,12 @@ $ curl [options...] url
 * 常用配合`-o`用于下载网路资源。Ubuntu下也可以使用其`wget`命令。
 
 ```sh
-# 请求 https://colin-chang.site
-$ curl https://colin-chang.site
+# 请求 https://colinchang.net
+$ curl https://colinchang.net
 
 # 下载
-$ curl -o index.html https://colin-chang.site
-$ wget https://colin-chang.site # Linux only
+$ curl -o index.html https://colinchang.net
+$ wget https://colinchang.net # Linux only
 ```
 
 ## 4. ssh命令

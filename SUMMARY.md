@@ -1,5 +1,5 @@
-* [About Me](http://colin-chang.site/contact/)
-* [Colin's Blog](http://colin-chang.site)
+* [About Me](http://colinchang.net/contact/)
+* [Colin's Blog](http://colinchang.net)
 * [前言](README.md)
 
 ## Part I - Linux基础
