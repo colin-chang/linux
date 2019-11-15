@@ -1,0 +1,23 @@
+{
+  "name": "linux",
+  "version": "1.0.0",
+  "description": "> \"开启Linux之旅\"",
+  "main": "index.js",
+  "dependencies": {
+    "gitbook-cli": "^2.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colin-chang/linux.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/colin-chang/linux/issues"
+  },
+  "homepage": "https://github.com/colin-chang/linux#readme"
+}
