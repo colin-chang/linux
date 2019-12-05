@@ -1,57 +1,43 @@
 # 全能翻墙工具 - V2Ray
 
-## 1. V2Ray 简介
-V2Ray(Project V) 相对于 Shadowsocks，V2Ray 更像全能选手，拥有更多可选择的协议 / 传输载体 (Socks、HTTP、TLS、TCP、mKCP、WebSocket )，还有强大的路由功能，不仅仅于此，它亦包含 Shadowsocks 组件，你只需要安装 V2Ray，你就可以使用所有的 V2Ray 相关的特性包括使用 Shadowsocks，由于 V2Ray 是使用 GO 语言所撰写的，天生的平台部署优势，下载即可使用。
+## 1. 前言
+最近GFW一直持续发威，据说SSR数据包已经被识别。导致大批鸡鸡和VPS被墙。大家都在寻找更好的科学上网的一个方式。
+
+就目前来讲，v2ray+ws+tls的一个方式只要是配置好了，伪装能力那是相当的强。。。但所有东西没有绝对，只能说，能让你更大几率的避免被墙。
 
 ## 2. V2Ray 上手
 ### 2.1 服务端
 除了使用第三方提供的V2Ray节点外，相信小伙伴们已经迫不及待的想自建服务器，小试身手了，话不多说，这就操练起来吧...
 
-系统要求：Ubuntu 14+ / Debian 7+ / CentOS 7+
+系统环境： Debian 8
 ```sh
 $ sudo -i
 $ cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-$ bash <(curl -s -L https://233yes.com/v2ray.sh)
+
+# 开启Debian自带的BBR：
+$ echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf && echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf && sysctl -p && sysctl net.ipv4.tcp_available_congestion_control && lsmod | grep bbr
+
+# 安装 v2-ui (包含V2Ray官方包) https://github.com/sprov065/v2-ui
+$ bash <(curl -Ls https://blog.sprov.xyz/v2-ui.sh)
 ```
-按照提示安装即可...
-![V2Ray安装选项](../img/part3/v2ray-install.png)
 
-配置 Shadowsocks(可选)
-![V2Ray安装选项](../img/part3/v2ray-ssr.png)
+> v2-ui https://github.com/sprov065/v2-ui
+> 免费Https证书 https://freessl.cn/
+> 免费的国际域名 https://freenom.com/
 
-安装完成
-![V2Ray安装完成](../img/part3/v2ray-install-done.png)
+v2-ui安装完成后即可痛过界面化配置v2ray，并作域名解析。
 
-> 常用操作
-
-操作|命令
-:-|:-
-v2ray info | 查看 V2Ray 配置信息
-v2ray config | 修改 V2Ray 配置
-v2ray link | 生成 V2Ray 配置文件链接
-v2ray infolink | 生成 V2Ray 配置信息链接
-v2ray qr | 生成 V2Ray 配置二维码链接
-v2ray ss | 修改 Shadowsocks 配置
-v2ray ssinfo | 查看 Shadowsocks 配置信息
-v2ray ssqr | 生成 Shadowsocks 配置二维码链接
-v2ray status | 查看 V2Ray 运行状态
-v2ray start | 启动 V2Ray
-v2ray stop | 停止 V2Ray
-v2ray restart | 重启 V2Ray
-v2ray log | 查看 V2Ray 运行日志
-v2ray update | 更新 V2Ray
-v2ray update.sh | 更新 V2Ray 管理脚本
-v2ray uninstall | 卸载 V2Ray
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FsFuE9SVP8w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### 2.2 客户端
 V2Ray 搭建好了，自然要配置客户端使用咯~
 
 V2Ray支持
-[Windows](https://233yes.com/post/8/)/
-[mac OS](https://233yes.com/post/9/)/
+[Windows](https://github.com/2dust/v2rayN/releases)/
+[mac OS](https://github.com/Cenmrev/V2RayX/releases)/
 Linux/
-[Android](https://233yes.com/post/12/)/
-[iOS](https://233yes.com/post/11/)
+[Android](https://github.com/2dust/v2rayNG/releases)/
+[iOS](https://apps.apple.com/us/app/shadowrocket/id932747118)
 等主流平台。
 
 除Linux外，所有客户端都是简单的图形界面操作，在此不再赘述。有不明白读者，点击参考以上连接即可。
