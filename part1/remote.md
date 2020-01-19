@@ -212,7 +212,7 @@ https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#creates
 ##### B 上传公钥
 在`Compute Engine`页面左侧菜单找到`元数据`,将上一步生成的公钥文件(KEY_FILENAME_pub)内容添加到SSH密钥中即可。
 
-![GCP上传密钥](../img/part1/ssh-gcp.jpg)
+![GCP上传密钥](https://s2.ax1x.com/2020/01/19/196vcV.jpg)
 
 ##### C 连接GCP
 使用以下命令登录即可

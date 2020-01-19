@@ -82,21 +82,21 @@ FileZilla服务端仅支持Windows平台，客户端支持Windows/mac OS/Linux�
 https://filezilla-project.org/download.php?type=server 下载服务端软件后，直接安装即可。
 ### 2) 配置
 点击工具栏上的user按钮小图标，进入用户配置界面；点击【Add】按钮新增用户；在弹出的对话框中输入用户名（本例测试用户名为tencent-qcloud），点击【OK】进入下一步：
-![添加用户](../img/part2/useradd.png '添加FileZilla用户')
+![添加用户](https://s2.ax1x.com/2020/01/19/19fYTO.png '添加FileZilla用户')
 
 勾选“password”，为新增的用户设置密码，点击【OK】按钮：
-![设置密码](../img/part2/passwd.jpg '设置FileZilla用户密码')
+![设置密码](https://s2.ax1x.com/2020/01/19/19fllR.jpg '设置FileZilla用户密码')
 
 切换到Shared folders，添加共享目录并勾选相应权限：
-![添加共享目录](../img/part2/choosefolder.jpg '设置FileZilla共享目录')
-![设置共享目录权限](../img/part2/setpermission.jpg '设置FileZilla权限')
+![添加共享目录](https://s2.ax1x.com/2020/01/19/19fZwT.jpg '设置FileZilla共享目录')
+![设置共享目录权限](https://s2.ax1x.com/2020/01/19/19f161.jpg '设置FileZilla权限')
 
 被动模式设置(Passive mode)。FTP的客户端默认以Passive mode连接服务器，Filezilla会随机打开1-65535之间的一个端口。可以根据实际客户端连接数调整开放端口数量。设置完成之后需要在**服务器防火墙放开对应的端口**。Google Cloud等服务器，另外还需要在服务器控制台中放开指定端口。
-![被动模式设置](../img/part2/passive.jpg '设置FileZilla被动模式')
+![被动模式设置](https://s2.ax1x.com/2020/01/19/19fQp9.jpg '设置FileZilla被动模式')
 
 启动TLS模式。解决"FTP over TLS is not enabled, users cannot securely"问题。
-![启动TLS模式](../img/part2/tls.jpg '设置TLS模式')
-![TLS证书](../img/part2/certification.jpg '生成证书')
+![启动TLS模式](https://s2.ax1x.com/2020/01/19/19fJ0K.jpg '设置TLS模式')
+![TLS证书](https://s2.ax1x.com/2020/01/19/19feTU.jpg '生成证书')
 按照图示启用TLS模式并生成TLS证书。在FTP客户端连接服务器，并信任证书即可。
 
 ## 3. Docker 方式安装
@@ -125,13 +125,13 @@ $ docker rm vsftpd
 
 使用FileZilla客户端连接时如果出现"FileZilla尝试连接“ECONNREFUSED - 连接被服务器拒绝”错误，修改传输模式为主动模式即可。
 
-![主动模式](../img/part2/activemode.jpg)
+![主动模式](https://s2.ax1x.com/2020/01/19/19fuY4.jpg)
 
 如果使用Windows客户端出现如下图所示的问题，可以尝试从防火墙放开Filezilla FTP Cliet。
 
-![FTP读取目录列表失败](../img/part2/ftp-error.jpg)
+![FTP读取目录列表失败](https://s2.ax1x.com/2020/01/19/19fnkF.jpg)
 
-![开放防火墙](../img/part2/ftp-firewall.jpg)
+![开放防火墙](https://s2.ax1x.com/2020/01/19/19fKfJ.jpg)
 
 详尽的vsftpd docker配置参见[Docker Hub](https://hub.docker.com/r/fauria/vsftpd)。
 
@@ -144,4 +144,4 @@ $ docker run -d -p 21:21 --name vsftpd fauria/vsftpd
 
 此时我们使用客户端通过SFTP协议连接，任何系统用户都可以使用自身用户名密码登录FTP服务器，目录为用户主目录。与SSH连接相同。
 
-![SFTP](../img/part2/sftp.jpg)
+![SFTP](https://s2.ax1x.com/2020/01/19/19f3Ox.jpg)
