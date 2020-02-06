@@ -24,16 +24,8 @@ Telegram支持Socket5和MTProy两种代理。关于Socket5代理，Brook和V2Ray
 下面我们以 Debian9 为例，通过官方提供的docker镜像，快速的大家一台 MTProxy服务器，这就搞起来吧...
 
 ```sh
-$ sudo -i
-# 同步时间
-$ cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-# 安装docker 
-$ curl -fsSL https://get.docker.com -o get-docker.sh
-$ sh get-docker.sh
-# 获取官方docker镜像
-$ docker pull telegrammessenger/proxy
 # 运行docker容器
-$ docker run -d -p443:443 --name=mtproto-proxy --restart=always -v proxy-config:/data telegrammessenger/proxy:latest
+$ docker run -d -p 443:443 --name=mtproto-proxy --restart=always -v proxy-config:/data telegrammessenger/proxy
 # 查看代理信息
 $ docker logs mtproto-proxy
 ```
