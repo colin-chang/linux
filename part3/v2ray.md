@@ -27,7 +27,9 @@ $ bash <(curl -Ls https://blog.sprov.xyz/v2-ui.sh)
 
 v2-ui安装完成后即可痛过界面化配置v2ray，并作域名解析。
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FsFuE9SVP8w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<figure style="position:relative;padding:30% 45%;">
+<iframe src="https://www.youtube.com/embed/FsFuE9SVP8w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" allowfullscreen></iframe>
+</figure>
 
 ### 2.2 客户端
 V2Ray 搭建好了，自然要配置客户端使用咯~
