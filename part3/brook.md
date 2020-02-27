@@ -108,4 +108,4 @@ Brook官方提供了
 [iOS](https://itunes.apple.com/us/app/brook-brook-shadowsocks-vpn-proxy/id1216002642)
  覆盖全平台的客户端，使用非常简单，不再赘述。
 
-![brook手机端](https://s2.ax1x.com/2020/01/19/19fB6I.jpg)
+![brook手机端](https://i.loli.net/2020/02/25/AlTG9sJPouFMhiE.jpg)

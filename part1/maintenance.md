@@ -50,7 +50,7 @@ options|含义
 $ df -h         # 显示磁盘使用情况
 ```
 
-![df使用](https://s2.ax1x.com/2020/01/19/196j10.jpg)
+![df使用](https://i.loli.net/2020/02/25/9mBbR75Md4s1tPO.jpg)
 
 ### 2.1 du命令
 * `du(disk usage)`命令用于统计目录或文件所占磁盘空间的大小，该命令的执行结果与df类似，du更侧重于磁盘的使用状况

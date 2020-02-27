@@ -77,7 +77,7 @@ $ whereis sudoers # 一般默认为 /etc/sudoers
 ```
 在`sudoers`加入要授权的用户即可。
 
-![CentOS sudoers](https://s2.ax1x.com/2020/01/19/19cSnU.jpg)
+![CentOS sudoers](hhttps://i.loli.net/2020/02/25/kQDAr6YM4p5cviP.jpg)
 
 ### 2.2 切换用户
 ```sh
@@ -98,7 +98,7 @@ $ exit
     ```
 * 切换和退出用户示意图：
 
-    <img src='https://s2.ax1x.com/2020/01/19/19cpBF.jpg'>
+    <img src='https://i.loli.net/2020/02/25/jmespnxlbDJc5N1.jpg'>
 
 ```sh
 # 切换test用户并切换到其主目录(/home/test)

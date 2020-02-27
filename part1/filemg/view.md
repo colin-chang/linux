@@ -66,7 +66,7 @@ $ ls colin[1-3]     # 匹配 colin1,colin2,colin3
 ```
 
 ### 2.3 ls -l 内容详解
-![ls-l详解](https://s2.ax1x.com/2020/01/19/196Xpq.jpg 'ls-l结果详解')
+![ls-l详解](https://i.loli.net/2020/02/26/mR1lr2j8VcOhtMA.jpg 'ls-l结果详解')
 
 如上图所示，各列依次为 **权限 | 硬链接数 | 所有者 | 所在组 | 文件尺寸 | 修改时间 | 名称**
 

@@ -100,6 +100,11 @@ $ wget https://ccstudio.org # Linux only
 ```
 
 ## 4. ssh命令
+
+<figure style="position:relative;padding:30% 45%;">
+<iframe src="https://www.youtube.com/embed/o5aYC6E2G-g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;" allowfullscreen></iframe>
+</figure>
+
 ### 4.1 ssh基础使用
 * ssh客户端是一种使用`Secure Shell(ssh)`协议连接到运行了ssh服务端的远程服务器上。
 * ssh是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。
@@ -212,7 +217,7 @@ https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#creates
 ##### B 上传公钥
 在`Compute Engine`页面左侧菜单找到`元数据`,将上一步生成的公钥文件(KEY_FILENAME_pub)内容添加到SSH密钥中即可。
 
-![GCP上传密钥](https://s2.ax1x.com/2020/01/19/196vcV.jpg)
+![GCP上传密钥](https://i.loli.net/2020/02/26/4L71giDGtcYz9mu.jpg)
 
 ##### C 连接GCP
 使用以下命令登录即可
@@ -246,6 +251,10 @@ $ ssh-add -K ~/.ssh/gcp
 完成以上配置后，连接服务器只需使用 `ssh tu`即可。
 
 > 除了连接云服务器，`GitHub`等服务也可是通过以上方式连接
+
+<figure style="position:relative;padding:30% 45%;">
+<iframe src="//player.bilibili.com/player.html?aid=82995152&amp;cid=141983898&amp;page=1&amp;as_wide=1&amp;high_quality=1&amp;danmaku=0" frameborder="no" scrolling="no" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</figure>
 
 ## 5. scp命令
 ```sh

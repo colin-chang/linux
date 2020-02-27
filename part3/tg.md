@@ -36,4 +36,4 @@ $ docker logs mtproto-proxy
 
 至此，即可在**不翻墙的情况下使用Telegram**了。
 
-![设置TG代理](https://s2.ax1x.com/2020/01/19/19fy0f.jpg)
+![设置TG代理](https://i.loli.net/2020/02/26/ns6Ujk8RDgF4met.jpg)

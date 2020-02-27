@@ -122,7 +122,7 @@ WireGuard也为Linux提供了[客户端](https://tunsafe.com/user-guide/linux)�
 #### 2) Windows
 TunSafe为Windows平台提供了简单易用WireGuard[客户端](https://tunsafe.com/download)。
 
-![TunSafe for Windows](https://s2.ax1x.com/2020/01/19/1944e0.jpg)
+![TunSafe for Windows](https://i.loli.net/2020/02/26/CZ4Eb1i9xWaXHYm.jpg)
 
 1⃣️ 下载安装TunSafe WireGuard客户端，地址 https://tunsafe.com/download 。因为目前测试版迭代比较快，功能也更多，使用还算稳定，推荐下载RC版
 
@@ -132,7 +132,7 @@ TunSafe为Windows平台提供了简单易用WireGuard[客户端](https://tunsafe
 
 4⃣️ 也可以将多个节点配置放到一个文件夹中，再将这个文件夹放入C:\Program Files\TunSafe\Config，TunSafe这时会将子文件夹列为二级菜单显示，如下图
 
-![TunSafe for Windows](https://s2.ax1x.com/2020/01/19/194Wyn.jpg)
+![TunSafe for Windows](https://i.loli.net/2020/02/25/fV3S6nrKhis2EdF.jpg)
 
 ##### WireGuard 分流
 
@@ -152,8 +152,8 @@ TunSafe也提供了[Android客户端](https://play.google.com/store/apps/details
 #### 2) iOS
 TunSafe目前提供了iOS客户端，可用于iPhone和iPad。**iOS客户端需要非大陆区Apple ID下载。**
 
-<img src="https://s2.ax1x.com/2020/01/19/19f01A.png">
-<img src="https://s2.ax1x.com/2020/01/19/19f678.png">
+<img src="https://i.loli.net/2020/02/25/ysJWha7LuiOwo6b.png">
+<img src="https://i.loli.net/2020/02/25/wmdcHn3E8tQu9y1.png">
 
 
 ## 3. 配置解析
