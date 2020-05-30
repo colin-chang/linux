@@ -36,10 +36,10 @@ V2Ray 搭建好了，自然要配置客户端使用咯~
 
 V2Ray支持
 [Windows](https://github.com/2dust/v2rayN/releases)/
-[mac OS](https://github.com/Cenmrev/V2RayX/releases)/
-Linux/
+[mac OS](https://github.com/yanue/V2rayU/releases)/
+[Linux](https://github.com/jiangxufeng/v2rayL)/
 [Android](https://github.com/2dust/v2rayNG/releases)/
 [iOS](https://apps.apple.com/us/app/shadowrocket/id932747118)
 等主流平台。
 
-除Linux外，所有客户端都是简单的图形界面操作，在此不再赘述。有不明白读者，点击参考以上连接即可。
+所有客户端都是简单的图形界面操作，在此不再赘述。有不明白读者，点击参考以上连接即可。
