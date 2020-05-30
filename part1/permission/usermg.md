@@ -77,7 +77,7 @@ $ whereis sudoers # 一般默认为 /etc/sudoers
 ```
 在`sudoers`加入要授权的用户即可。
 
-![CentOS sudoers](hhttps://i.loli.net/2020/02/25/kQDAr6YM4p5cviP.jpg)
+![CentOS sudoers](https://i.loli.net/2020/02/25/kQDAr6YM4p5cviP.jpg)
 
 ### 2.2 切换用户
 ```sh
