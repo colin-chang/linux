@@ -79,7 +79,7 @@ module.exports = {
         ],
         sidebarDepth:3,
         displayAllHeaders: true,
-        lastUpdated: '更新时间',
+        lastUpdated: '更新时间'
     },
     markdown: {
         lineNumbers: true
