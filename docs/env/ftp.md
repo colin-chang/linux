@@ -79,7 +79,7 @@ FileZilla是一个免费开源的FTP软件，分为客户端版本和服务器�
 
 FileZilla服务端仅支持Windows平台，客户端支持Windows/mac OS/Linux。
 ### 1) 安装
-https://filezilla-project.org/download.php?type=server 下载服务端软件后，直接安装即可。
+[下载服务端软件](https://filezilla-project.org/download.php?type=server)后，直接安装即可。
 ### 2) 配置
 点击工具栏上的user按钮小图标，进入用户配置界面；点击【Add】按钮新增用户；在弹出的对话框中输入用户名（本例测试用户名为tencent-qcloud），点击【OK】进入下一步：
 ![添加用户](https://i.loli.net/2020/02/25/ncDbWRhJa4AL5CF.png '添加FileZilla用户')

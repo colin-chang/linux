@@ -1,2 +1,2 @@
-/_book
-/node_modules
+node_modules
+docs/.vuepress/dist

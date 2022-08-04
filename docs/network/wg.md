@@ -1,8 +1,8 @@
 # 下一代VPN协议 - WireGuard 
 
-* [1.WireGuard简介](#1-wireguard简介)
-* [2.WireGuard使用](#2-wireguard上手)
-* [3.WireGuard](#3-配置解析)
+* [1.WireGuard简介](#_1-wireguard-简介)
+* [2.WireGuard使用](#_2-wireguard-上手)
+* [3.WireGuard](#_3-配置解析)
 
 ## 1. WireGuard 简介
 [WireGuard](https://www.wireguard.com)被视为下一代VPN协议，用来替代OpenVPN，IPSec等VPN协议。
@@ -152,8 +152,8 @@ TunSafe也提供了[Android客户端](https://play.google.com/store/apps/details
 #### 2) iOS
 TunSafe目前提供了iOS客户端，可用于iPhone和iPad。**iOS客户端需要非大陆区Apple ID下载。**
 
-<img src="https://i.loli.net/2020/02/25/ysJWha7LuiOwo6b.png">
-<img src="https://i.loli.net/2020/02/25/wmdcHn3E8tQu9y1.png">
+![tunsafe](https://i.loli.net/2020/02/25/ysJWha7LuiOwo6b.png)
+![tunsafe](https://i.loli.net/2020/02/25/wmdcHn3E8tQu9y1.png)
 
 
 ## 3. 配置解析

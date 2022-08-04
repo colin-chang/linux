@@ -1,23 +1,24 @@
 {
   "name": "linux",
   "version": "1.0.0",
-  "description": "> \"开启Linux之旅\"",
+  "description": "Linux—流行的服务器操作系统",
   "main": "index.js",
-  "dependencies": {
-    "gitbook-cli": "^2.3.2"
-  },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/colin-chang/linux.git"
-  },
-  "author": "",
+  "repository": "git+https://github.com/colin-chang/linux.git",
+  "author": "Colin Chang",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/colin-chang/linux/issues"
   },
-  "homepage": "https://github.com/colin-chang/linux#readme"
+  "devDependencies": {
+    "@vuepress/plugin-active-header-links": "^1.9.7",
+    "@vuepress/plugin-back-to-top": "^1.9.7",
+    "@vuepress/plugin-google-analytics": "^1.9.7",
+    "@vuepress/plugin-medium-zoom": "^1.9.7",
+    "vuepress": "^1.9.7",
+    "watchman": "^1.0.0"
+  }
 }
