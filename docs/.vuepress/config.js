@@ -18,9 +18,15 @@ module.exports = {
         }]
     ],
     themeConfig: {
-        logo:'https://s2.loli.net/2022/08/04/UXqgLBVfzPuvb5A.png',
+        logo: 'https://s2.loli.net/2022/08/04/UXqgLBVfzPuvb5A.png',
         repo: 'https://github.com/colin-chang/linux',
-        smoothScroll:true,
+        smoothScroll: true,
+        search: false,
+        algolia: {
+            apiKey: '6a4d5d4b8012d6f4b7d7214d8a9b2dea',
+            indexName: 'linux-a-nomad',
+            appId: 'TEI5RUN9ZI'
+        },
         nav: [{
             text: 'Get Start',
             link: '/intro'
@@ -77,7 +83,7 @@ module.exports = {
             ]
         }
         ],
-        sidebarDepth:3,
+        sidebarDepth: 3,
         displayAllHeaders: true,
         lastUpdated: '更新时间'
     },
