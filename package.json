@@ -1,24 +1,10 @@
 {
-  "name": "linux",
-  "version": "1.0.0",
-  "description": "Linux—流行的服务器操作系统",
-  "main": "index.js",
-  "scripts": {
-    "dev": "vuepress dev docs",
-    "build": "vuepress build docs"
-  },
-  "repository": "https://github.com/colin-chang/linux",
-  "author": "Colin Chang",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/colin-chang/linux/issues"
-  },
-  "devDependencies": {
-    "@vuepress/plugin-active-header-links": "^1.9.7",
-    "@vuepress/plugin-back-to-top": "^1.9.7",
-    "@vuepress/plugin-google-analytics": "^1.9.7",
-    "@vuepress/plugin-medium-zoom": "^1.9.7",
-    "vuepress": "^1.9.7",
-    "watchman": "^1.0.0"
-  }
+	"devDependencies": {
+		"vitepress": "1.0.0-rc.4"
+	},
+	"scripts": {
+	  "dev": "vitepress dev docs",
+	  "build": "vitepress build docs",
+	  "preview": "vitepress preview docs"
+	}
 }

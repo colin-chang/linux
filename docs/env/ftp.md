@@ -1,16 +1,20 @@
 # FTP安装和配置
 
 ## 1. Debian/Ubuntu
+
 ### 1) 安装vsftp
+
 ``` sh
-$ sudo apt install vsftpd
+sudo apt install vsftpd
 ```
 
 ### 2) 配置vsftp
+
 ```sh
 # 编辑vsftp配置文件
 $ vi /etc/vsftpd.conf
 ```
+
 作以下配置：
 
 配置|作用
@@ -25,7 +29,9 @@ $ vi /etc/vsftpd.conf
 # 修改配置后需要重启服务
 $ sudo service vsftpd restart
 ```
+
 ### 3) 用户配置
+
 安装vsftp时会自动创建`ftp`用户组。在`ftp`组中的用户都可以进行ftp连接。用户的ftp目录默认限制为用户的主目录。所以只需要将现有用户添加到`ftp`组或创建用户指定到`ftp`组中即可。
 
 * 现有用户
@@ -71,16 +77,20 @@ ftp用户一般只可进行ftp操作。如果常规用户(非ftp用户)想使用
 
 > ftp服务器配置完成后，务必开放ftp端口(默认21)，不同服务器开放方式不同，在此不再赘述
 
-
 ## 2. Windows Server
+
 我们推进使用FileZilla在Windows Server中快速搭建FTP服务器。
 
 FileZilla是一个免费开源的FTP软件，分为客户端版本和服务器版本，具备所有的FTP软件功能。可控性、有条理的界面和管理多站点的简化方式使得Filezilla客户端版成为一个方便高效的FTP客户端工具，而FileZilla Server则是一个小巧并且可靠的支持FTP&SFTP的FTP服务器软件。
 
 FileZilla服务端仅支持Windows平台，客户端支持Windows/mac OS/Linux。
+
 ### 1) 安装
+
 [下载服务端软件](https://filezilla-project.org/download.php?type=server)后，直接安装即可。
+
 ### 2) 配置
+
 点击工具栏上的user按钮小图标，进入用户配置界面；点击【Add】按钮新增用户；在弹出的对话框中输入用户名（本例测试用户名为tencent-qcloud），点击【OK】进入下一步：
 ![添加用户](https://i.loli.net/2020/02/25/ncDbWRhJa4AL5CF.png '添加FileZilla用户')
 
@@ -100,7 +110,9 @@ FileZilla服务端仅支持Windows平台，客户端支持Windows/mac OS/Linux�
 按照图示启用TLS模式并生成TLS证书。在FTP客户端连接服务器，并信任证书即可。
 
 ## 3. Docker 方式安装
+
 ### 3.1 FTP
+
 ```sh
 # 获取vsftpd镜像
 $ docker pull fauria/vsftpd
@@ -136,10 +148,11 @@ $ docker rm vsftpd
 详尽的vsftpd docker配置参见[Docker Hub](https://hub.docker.com/r/fauria/vsftpd)。
 
 ### 3.2 SFTP
+
 我们可以尝试使用SFTP协议，即使用SSH协议传输。通过以下方式启动vsftpd容器即可，不需要指定用户名密码和目录。
 
 ```sh
-$ docker run -d -p 21:21 --name vsftpd fauria/vsftpd
+docker run -d -p 21:21 --name vsftpd fauria/vsftpd
 ```
 
 此时我们使用客户端通过SFTP协议连接，任何系统用户都可以使用自身用户名密码登录FTP服务器，目录为用户主目录。与SSH连接相同。

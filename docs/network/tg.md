@@ -1,6 +1,7 @@
 # Telegram - 畅享安全自由通讯
 
 ## 1. Telegram 简介
+
 Telegram(俗称TG或电报) 是一个跨平台的实时通讯应用，它的客户端是自由及开放源代码应用，但是它的服务器是专有应用。用户可以相互交换加密与自析构的消息，以及照片、影片、文件，支持所有的文件类型。
 
 或许你之前没有听说过这款应用，没关系，因为它所属的公司 Telegram Messenger LLP 是一家独立的非营利公司，没有商业利益驱动，不制造新闻，不炒作，产品不被大众所知也就不难理解了。
@@ -13,7 +14,7 @@ Telegram(俗称TG或电报) 是一个跨平台的实时通讯应用，它的客�
 
 官方网站有正式发布 Android、iOS、Mac OS X 与 正在 Beta 的 Windows Phone 的版本。
 
-https://telegram.org/ 需要翻墙访问😢😢😢
+<https://telegram.org/> 需要翻墙访问😢😢😢
 
 ## 3. MTProxy
 
