@@ -14,7 +14,7 @@ $ sudo apt update
 $ sudo apt install nginx
 ```
 
-nginx安装完成之后默认已经启动，可以直接访问 <http://localhost/，> 如果看到欢迎页面说明nginx安装成功。
+nginx安装完成之后默认已经启动，可以直接访问 `http://localhost/`， 如果看到欢迎页面说明nginx安装成功。
 
 ### 2) mac OS
 
@@ -26,7 +26,7 @@ $ brew update
 $ brew install nginx
 ```
 
-nginx安装完成之后默认已经启动，可以直接访问 <http://localhost:8080/，> 如果看到欢迎页面说明nginx安装成功。
+nginx安装完成之后默认已经启动，可以直接访问 `http://localhost:8080/`， 如果看到欢迎页面说明nginx安装成功。
 
 ## 2. 简单配置
 
