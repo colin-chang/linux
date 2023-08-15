@@ -12,18 +12,19 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       {
         text: 'Books',
-        items: [{
-          text: 'Python',
-          link: 'https://python.a-nomad.com'
-        },
-        {
-          text: '.Net',
-          link: 'https://dotnet.a-nomad.com'
-        },
-        {
-          text: '大前端',
-          link: 'https://frontend.a-nomad.com'
-        }
+        items: [
+          {
+            text: 'Python',
+            link: 'https://python.a-nomad.com'
+          },
+          {
+            text: '大前端',
+            link: 'https://frontend.a-nomad.com'
+          },
+          {
+            text: '.Net',
+            link: 'https://dotnet.a-nomad.com'
+          }
         ]
       },
     ],
