@@ -1,20 +1,12 @@
 # 远程管理
 
-| 命令 | 说明 |
-|:-|:-|
-| `logout [n]`|注销登录的shell。不在shell执行报错|
-| [`shutdown [-options] [time]`](#_1-shutdown命令)|关机/重启|
-| [`ifconfig [-options]`或`ip addr`](#_2-ifconfig命令)|查看或配置网卡信息|
-| [`ping [-options] destination`](#_3-1-ping命令)|检测到目标地址连接通讯是否正常|
-| [`curl [-options] url`](#_3-2-curl命令)|发送网路请求到指定地址|
-| [`ssh [-options] [user@hostname]`](#_4-ssh命令)|远程连接服务器|
-| <a href='#_5-scp命令'>`scp [-options] [[user@]host1:]file1 [[user@]host2:]file2`</a>|远程复制文件|
-
 ## 1. shutdown命令
+
 ```sh
 # 命令格式
 $ shutdown [-options] [time]
 ```
+
 * `shutdown`命令一般需要root权限执行
 * 远程维护服务器时，最好不要关闭系统(关闭后启动不方便)，一般选择重启系统
 
@@ -53,6 +45,7 @@ $ shutdown -c
 ```
 
 ## 2. ifconfig命令
+
 ```sh
 # 命令格式
 $ ifconfig [-options]
@@ -68,10 +61,13 @@ $ ifconfig
 # 过滤查看IP地址
 $ ifconfig | grep inet
 ```
+
 除了`ifconfig`命令，也常用`ip addr`来查看网路配置。
 
 ## 3. 网络
+
 ### 3.1 ping命令
+
 ```sh
 # 命令格式
 $ ping [-options] destination
@@ -79,9 +75,10 @@ $ ping [-options] destination
 
 * `ping`一般用于检测当前计算机到目标计算机之间的网络是否通畅。我们给目标IP发送一个数据包，对方返回一个包，根据返回包的时间我们可以确定目标计算机是否存在并且工作正常以及网络链接速度。
 * Linux中`ping`命令不会自动停止，可以使用`Ctrl + C`退出。
-* `ping 127.0.0.1` 可以测试本机网卡是否正常工作 
+* `ping 127.0.0.1` 可以测试本机网卡是否正常工作
 
 ### 3.2 curl命令
+
 ```sh
 # 命令格式
 $ curl [options...] url
@@ -100,7 +97,9 @@ $ wget https://a-nomad.com # Linux only
 ```
 
 ## 4. ssh命令
+
 [ssh小白入门教程一次弄懂ssh入门到精通](https://a-nomad.com/ssh)
 
 ## 5. scp命令
+
 [scp远程拷贝命令详解](https://a-nomad.com/ssh#heading-3-scp)

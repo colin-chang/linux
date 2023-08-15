@@ -3,7 +3,9 @@
 MySQL是当下流行的跨平台高性能的数据库。下面我们简单的介绍以下Ubuntu和mac OS中的安装和配置方法
 
 ## 1. 安装MySQL
+
 ### 1) mac OS
+
 ```sh
 # 清理历史。若为首次安装则可跳过此部分
 $ brew uninstall mysql
@@ -16,6 +18,7 @@ $ brew install mysql
 ```
 
 ### 2) Ubuntu
+
 ```sh
 # 安装服务端/客户端。服务端安装时按提示设定root用户密码即可
 $ sudo apt install mysql-server/mysql-client
@@ -30,7 +33,9 @@ $ mysql -uuid -ppwd
 连接成功之后进入mysql客户端后可以直接执行SQL指令，如`select now();`，**SQL指令必须已英文分号结尾**。
 
 ## 2. 简单配置
+
 ### 1) mac OS
+
 ```sh
 # 修改目录权限。否则会出现类似 "ERROR! Manager of pid-file quit without updating file."
 $ sudo chmod -R 757 /usr/local/var/mysql
@@ -63,19 +68,21 @@ $ mysql_secure_installation
 * 前台运行
 
 ```sh
-$ sudo mysql.server start/stop/restart
+sudo mysql.server start/stop/restart
 ```
 
 * 后台运行
 
 ```sh
-$ brew services start/stop/restart mysql
+brew services start/stop/restart mysql
 ```
 
 ### 2) Ubuntu
+
 基于安全考虑，mysql默认只能本机连接。如果需要远程连接，需要按照如下步骤修改配置。生产环境中为了安全我们一般会配置为只允许指定IP连接到mysql。
 
 (1) 修改配置文件
+
 ```sh
 # 不同mysql版本配置文件路径可能不同，可自行搜索
 $ sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf 
@@ -85,11 +92,13 @@ $ sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf
 ```
 
 (2)重启mysql服务
+
 ```sh
-$ sudo /etc/init.d/mysql restart
+sudo /etc/init.d/mysql restart
 ```
 
 (3)开放IP
+
 ```sh
 # 连接到mysql
 $ mysql -uuid -ppwd

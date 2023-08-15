@@ -1,10 +1,7 @@
-# 下一代VPN协议 - WireGuard 
-
-* [1.WireGuard简介](#_1-wireguard-简介)
-* [2.WireGuard使用](#_2-wireguard-上手)
-* [3.WireGuard](#_3-配置解析)
+# 下一代VPN协议 - WireGuard
 
 ## 1. WireGuard 简介
+
 [WireGuard](https://www.wireguard.com)被视为下一代VPN协议，用来替代OpenVPN，IPSec等VPN协议。
 目前支持Linux,Windows,mac OS,Android,iOS等主流平台。
 
@@ -40,6 +37,7 @@ $ ./centos7_wireguard_install.sh
 ```
 
 升级系统内核完成后需要重启服务器。服务器重启完毕后执行以下命令：
+
 ```sh
 $ sudo -i
 $ ./centos7_wireguard_install.sh
@@ -53,10 +51,13 @@ $ wget -qO- https://git.io/fpnQt | bash
 简单介绍下这个东西,udp2raw tunnel，通过raw socket给UDP包加上TCP或ICMP header，进而绕过UDP屏蔽或QoS，或在UDP不稳定的环境下提升稳定性。可以有效防止在使用kcptun或者finalspeed的情况下udp端口被运营商限速。支持心跳保活、自动重连，重连后会恢复上次连接，在底层掉线的情况下可以保持上层不掉线。同时有加密、防重放攻击、信道复用的功能
 
 原理大概就是在udp包的上加上tcp的包头,让路由器不会认为这是一个udp的包。说这么多，不明白？不重要，安装很简单。
+
 ```sh
-$ wget -qO- https://git.io/fpKnF | bash
+wget -qO- https://git.io/fpKnF | bash
 ```
+
 至此，WireGuard服务端安装和配置已经完成。可以通过以下命令查看客户端配置。
+
 ```sh
 # 查看WireGuard状态
 $ wg
@@ -71,7 +72,9 @@ $ cat /etc/wireguard/client.conf
 *理论上只开启UDP入站即可，如果不放心可以同时开放出站*
 
 #### 2) Ubuntu/Debian
+
 Ubuntu和Debian的安装过程与CentOS相同，只是使用的一键安装脚本不同，此处只提供差异的一键安装脚本，安装过程不再赘述。
+
 ``` sh
 # 一键安装wireguard 脚本 Ubuntu
 $ wget https://raw.githubusercontent.com/hongwenjun/vps_setup/master/ubuntu_wireguard_install.sh
@@ -81,8 +84,11 @@ $ wget https://raw.githubusercontent.com/hongwenjun/vps_setup/master/debian_wg_v
 ```
 
 ## 2.2 客户端
+
 ### 2.2.1 电脑端
+
 #### 1) mac OS/Linux
+
 由于还处在测试阶段，mac目前还没有正式版本，只能通过命令行模式使用。
 
 * **wireguard-tools**
@@ -109,22 +115,24 @@ $ wget https://raw.githubusercontent.com/hongwenjun/vps_setup/master/debian_wg_v
     ```
 
 * **TunSafe**
-    除了官方的wireguard-tools工具，[Tunsafe](https://tunsafe.com/osx)也发布了预览版的命令行工具。使用方式略简单一些。下载地址：https://tunsafe.com/osx
-    
+    除了官方的wireguard-tools工具，[Tunsafe](https://tunsafe.com/osx)也发布了预览版的命令行工具。使用方式略简单一些。下载地址：<https://tunsafe.com/osx>
+
     ```sh
     # 启动服务
     $ sudo ./tunsafe wg0.conf
     ```
+
     使用`Ctrl + C`退出服务。
 
 WireGuard也为Linux提供了[客户端](https://tunsafe.com/user-guide/linux)，目前也处于测试阶段。Linux作为桌面使用较少，不再详述。
 
 #### 2) Windows
+
 TunSafe为Windows平台提供了简单易用WireGuard[客户端](https://tunsafe.com/download)。
 
 ![TunSafe for Windows](https://i.loli.net/2020/02/26/CZ4Eb1i9xWaXHYm.jpg)
 
-1⃣️ 下载安装TunSafe WireGuard客户端，地址 https://tunsafe.com/download 。因为目前测试版迭代比较快，功能也更多，使用还算稳定，推荐下载RC版
+1⃣️ 下载安装TunSafe WireGuard客户端，地址 <https://tunsafe.com/download> 。因为目前测试版迭代比较快，功能也更多，使用还算稳定，推荐下载RC版
 
 2⃣️ 导入WireGuard配置。打开TunSafe，选择Options，选择Import File…导入单个配置，或者可以拖动单个配置文件到TunSafe窗口完成导入。如果想一次性导入多个文件，可以在Options里选择Browse In Explorer，就会打开C:\Program Files\TunSafe\Config这个文件夹，然后将配置文件一起复制到这个文件夹即可
 
@@ -140,23 +148,25 @@ SS/SSR用户可能习惯了PAC模式的分流，WireGuard同样支持分流。Wi
 
 Mac和Linux版本的客户端分流原理于Windows一直。有兴趣的读者可以参阅[此处](https://blog.mozcp.com/wireguard-usage/)。文档实现了Linux分流，Mac版路由规则略有区别。
 
-### 2.2.2 移动端 
+### 2.2.2 移动端
 
 WireGuard移动端App使用方式较为简单，此处只提供下载地址，不再介绍如何使用。
 
 #### 1) Android
+
 WireGuard官方提供了[Android客户端](https://play.google.com/store/apps/details?id=com.wireguard.android)。
 
 TunSafe也提供了[Android客户端](https://play.google.com/store/apps/details?id=com.tunsafe.app)
 
 #### 2) iOS
+
 TunSafe目前提供了iOS客户端，可用于iPhone和iPad。**iOS客户端需要非大陆区Apple ID下载。**
 
 ![tunsafe](https://i.loli.net/2020/02/25/ysJWha7LuiOwo6b.png)
 ![tunsafe](https://i.loli.net/2020/02/25/wmdcHn3E8tQu9y1.png)
 
-
 ## 3. 配置解析
+
 ```sh
 #客户端虚拟网络设备
 [Interface]

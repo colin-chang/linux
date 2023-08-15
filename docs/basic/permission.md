@@ -1,6 +1,7 @@
 # 权限管理
 
 ## 1. 用户(组)权限管理
+
 ### 1.1 用户组管理
 
 用户组可以方便批量管理用户，每个用户必须属于一个组或多个组。为一个组赋权限后，组中所有用户自动获得相应权限
@@ -35,10 +36,9 @@ $ sudo gpasswd -d colin sudo
 
 添加用户到组中除了使用`gpasswd -a user group`命令，也可以使用`usermod -a -G group user`。
 
-
 ### 1.2 用户管理
 
-命令 | 说明 
+命令 | 说明
 :-|:-
 [`su [-options] [user]`](#22-切换用户)|切换用户
 [`useradd [-options] user`](#1-useradd-命令)|创建新用户
@@ -51,13 +51,14 @@ $ sudo gpasswd -d colin sudo
 [`usermod [-options] user`](#252-usermod-命令)|修改用户信息
 
 #### 1.2.1 root 用户
+
 Linux系统中`root`账号通常用于系统维护和管理，其对操作系统所有资源 **具有所有访问权限**。
 若要切换到root用户，参阅 [切换到root用户](#switchroot)
 
-`sudo`命令用来以其他身份来执行命令，预设的身份为`root`。用户使用`sudo`时需要输入密码，密码5分钟有效。 
+`sudo`命令用来以其他身份来执行命令，预设的身份为`root`。用户使用`sudo`时需要输入密码，密码5分钟有效。
 
 ```sh
-$ sudo rm -r Application      # 以管理员身份删除Application目录
+sudo rm -r Application      # 以管理员身份删除Application目录
 ```
 
 只有特定用户才可使用`sudo`,未经授权用户使用`sudo`会发警告邮件给管理员。不同的Linux发行版中授权`sudo`的方式略有区别。
@@ -65,22 +66,27 @@ $ sudo rm -r Application      # 以管理员身份删除Application目录
 ##### 1) Ubuntu/Debian
 
 在`sudo`组中的用户即可使用`sudo`。将指定用户加入`sudo`组中即可。
+
 ```sh
 # 将colin用户添加到sudo组中
 $ gpasswd -a colin sudo
 ```
+
 ##### 2) CentOS
 
 在`sudoers`文件中列出`sudo`用户。将指定用户加入`sudoers` 文件中即可。
+
 ```sh
 # 查看 sudoers 路径
 $ whereis sudoers # 一般默认为 /etc/sudoers
 ```
+
 在`sudoers`加入要授权的用户即可。
 
 ![CentOS sudoers](https://i.loli.net/2020/02/25/kQDAr6YM4p5cviP.jpg)
 
 #### 1.2.2 切换用户
+
 ```sh
 # 命令格式
 
@@ -93,10 +99,12 @@ $ exit
 
 * `options`为`-`或`-l`会在切换用户时同时切换到用户主目录
 * <span id="switchroot">以下命令都可以切换到root用户</span>
+
     ```sh
-    $ su
-    $ sudo -i
+    su
+    sudo -i
     ```
+
 * 切换和退出用户示意图：
 
     ![切换用户](https://i.loli.net/2020/02/25/jmespnxlbDJc5N1.jpg)
@@ -113,11 +121,14 @@ $ su
 ```
 
 #### 1.2.3 创建用户
+
 ##### 1) useradd 命令
+
 ```sh
 # 命令格式
 $ useradd [-options] user
 ```
+
 options|含义
 :-|:-
 `-m`|自动创建用户主目录
@@ -128,13 +139,13 @@ options|含义
 
 通过`-d`指定用户主目录后，如果用户可能对此目录没有权限则需要赋予相应权限，比如添加到所有者组或者修改目录所有者。
 
-
 ```sh
 # 创建colin用户并分配到dev组，同时创建用户主目录
 $ sudo useradd -m -g dev colin
 ```
 
 ##### 2) passwd 命令
+
 ```sh
 # 命令格式
 $ passwd [-options] [user]
@@ -147,11 +158,15 @@ $ passwd [-options] [user]
 # 给colin设置密码
 $ passwd colin
 ```
+
 出于安全性考虑，在多数流行的Linux发行版当中都对用户密码强度存在一定的限制，如果不符合规范可能会得到一个类似`new password is too simple`的错误信息。某些情况，如本机测试环境，我们通常想设置一些简单的密码以减少繁琐的密码输入时间，此时**使用管理员身份设置特定用户名密码则可以跳过的密码强度校验。**如，`sudo passwd colin # 设置colin密码并跳过密码强度校验`
 
 #### 1.2.4 查看用户信息
+
 ##### 1) passwd 文件
+
 `/et/passwd`文件存在的是所有用户的信息，每条记录是一个用户，记录7个字段，以":"分割，形如
+
 ```sh
 $ cat /etc/passwd
 
@@ -172,10 +187,12 @@ test|x|1001|1001||/home/test|/bin/sh
 * 没有内容的项全部留空
 
 ##### 2) id 命令
+
 ```sh
 # 命令格式
 $ id [-options] [user]
 ```
+
 `id`命令可以快速方便的查看用户和所在组信息。不指定用户默认显示当前用户信息。命令执行结果示例如下：
 
 ```sh
@@ -185,9 +202,11 @@ $ id colin
 # 执行结果如下
 # uid=1000(colin) gid=1000(colin) groups=1000(colin),4(adm),24(cdrom),27(sudo)
 ```
+
 groups列出了用户的所有所在组(主组+附加组)。gid为主组ID
 
 ##### 3) 其他相关命令
+
 ```sh
 # 查看登录到系统的活跃用户
 $ who
@@ -197,16 +216,21 @@ $ whoami
 ```
 
 #### 1.2.5 修改用户信息
+
 ##### 1.2.5.1 主组与附加组
+
 一个用户可以隶属与多个组。其中至少包含一个主组和任意多个附加组。
+
 * 主组：通常在用户创建时指定。主组ID在`/etc/passwd`的第四列GID。通过`id`命令快速查看主组信息
 * 附加组：用于指定 **用户附加权限**。在`/etc/group`中最后一列表示该组所有用户列表。通过`id`命令结果`groups`可以快速查看所有所在组(主组+附加组)
 
 ##### 1.2.5.2 usermod 命令
+
 ```sh
 # 命令格式
 $ usermod [-options] user
 ```
+
 `usermod`命令可以修改用户信息，如用户主组、附加组、主目录、shell等。
 
 options|含义
@@ -216,6 +240,7 @@ options|含义
 `-s`|修改shell
 
 ###### 1) 修改组
+
 * 修改用户组后需要**重新登录**才能生效
 * useradd添加的用户默认无法以`root`身份执行命令。若要使用可以将用户附加到`sudo`中
 
@@ -223,7 +248,9 @@ options|含义
 # 将colin用户附加到sudo组中
 $ sudo usermod -a -G sudo colin
 ```
+
 ###### 2) 修改 Shell
+
 * Ubuntu中`useradd`添加的用户默认shell为dash(`/bin/sh`)，而系统用户使用的shell默认为bash(`/bin/bash`)。bash在颜色渲染和使用上更加方便。
 * 修改用户Shell后需要重新登录方可生效
 
@@ -233,6 +260,7 @@ $ sudo usermod -s /bin/bash test
 ```
 
 ## 2. 权限管理
+
 ### 2.1 权限介绍
 
 权限|数字代码|缩写|英文
@@ -245,6 +273,7 @@ $ sudo usermod -s /bin/bash test
 **目录**可读权限表示是否可以读取目录下内容，可写表示是否可以修改目录下内容，**可执行表示是否可以在此目录执行命令**
 
 ### 2.2 修改权限
+
 Linux修改权限有一下三种方式:
 
 命令|作用
@@ -254,6 +283,7 @@ Linux修改权限有一下三种方式:
 [`chmod [-options] MODE FILE`](#_2-2-2-chmod-命令)|直接修改权限
 
 #### 2.2.1 chown 命令
+
 ```sh
 # 将123.txt所有者修改为test用户
 $ sudo chown test 123.txt
@@ -263,8 +293,11 @@ $ sudo chown test code
 ```
 
 #### 2.2.2 chmod 命令
+
 `chmod`是change mode缩写，其功能是修改用户(组)对文件或目录的权限
+
 ##### 1) 加减方式
+
 ```sh
 # 命令格式
 $ chmod +/-r|w|x file|dir
@@ -274,18 +307,21 @@ $ chmod +/-r|w|x file|dir
 * 此种方式会同时修改 所有者、所在组、其他组 权限，不能精确修改三者各自权限
 
 ```sh
-$ chmod +x 123.txt    # 添加123.txt文件的可执行权限
-$ chmod -rw demo      # 移除demo目录的读写权限
+chmod +x 123.txt    # 添加123.txt文件的可执行权限
+chmod -rw demo      # 移除demo目录的读写权限
 ```
 
 ##### 2) 数字方式
+
 ```sh
 # 命令格式
 $ chmod [-options] xxx file
 ```
+
 * `-R`表示递归修改文件目录权限
 * `chmod`可以简单的使用三个数字分别设置 **拥有者/所在组/其他组**权限
 * `xxx`代表三个0-7的数字。**每位数字含义为各部分权限数字代码的和值**。权限数字代码结构如下表
+
 <table style='text-align:center'>
 <tr><th colspan='3'>所有者权限</th><th colspan='3'>所在组权限</th><th colspan='3'>其他组权限</th></tr>
 <tr><td>r</td><td>w</td><td>x</td><td>r</td><td>w</td><td>x</td><td>r</td><td>w</td><td>x</td></tr>
@@ -304,6 +340,7 @@ $ chmod [-options] xxx file
 </table>
 
 * 常见权限组合有
+
 <table style='text-align:center'>
   <thead>
     <tr><th>权限组合</th><th colspan='3'>所有者权限</th><th colspan='3'>所在组权限</th><th colspan='3'>其他组权限</th></tr>
